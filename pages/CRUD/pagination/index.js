@@ -3,7 +3,7 @@ import {testPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate";
 
-export default class TablePages extends Component{
+export default class TablePagination extends Component{
     state={
         count:1,
     }

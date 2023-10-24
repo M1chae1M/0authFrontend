@@ -12,24 +12,12 @@ const backend=''
 
 class ResourceCode extends Component{
     render(){
-        const styles={
-
-        }
         const {url}=this.props
         return(
             <div>
-                <div>
-                    <div style={{color:'#0d6efd',fontSize:'40px',fontWeight:'bold'}}>Readme:</div>
-                    <Readme/>
-                </div>
-                <div>
-                    <div style={{color:'#0d6efd',fontSize:'40px',fontWeight:'bold'}}>Frontend:</div>
-                    <Frontend/>
-                </div>
-                <div>
-                    <div style={{color:'#0d6efd',fontSize:'40px',fontWeight:'bold'}}>Backend:</div>
-                    <Backend url={url}/>
-                </div>
+                <Readme/>
+                <Frontend/>
+                <Backend url={url}/>
             </div>
         )
     }

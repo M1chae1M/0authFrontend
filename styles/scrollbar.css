@@ -1,3 +1,6 @@
+:root{
+    --blue-background:#007bff;
+}
 ::-webkit-scrollbar{
     width:6px;
 }
@@ -11,16 +14,20 @@
 ::-webkit-scrollbar-thumb:hover{
     background-color:#555;
 }
-
 .actualCard{
-    color:red;
-    color:#007bff;
+    color:white;
+    user-select:none;
+}
+.actualCard > *{
+    background:var(--blue-background);
+    font-weight:bold;
 }
 .allCards{
     display:flex;
     justify-content:center;
     list-style:none;
     max-width:300px;
+    user-select:none;
 }
 .allCards a{
     display:flex;
@@ -29,14 +36,18 @@
     width:30px;
     height:30px;
     margin:0 5px;
-    border:2px solid #007bff;
+    border:2px solid var(--blue-background);
     border-radius:5px;
-    color:#007bff;
+    color:var(--blue-background);
     text-decoration:none;
     cursor:pointer;
     align-items:center;
     justify-content:center;
 }
 .allCards a:hover{
-    color:#007bff;
+    color:var(--blue-background) !important;
+    background:#4c9cf1;
+    color:white !important;
+    opacity:0.7;
+    scale:1.2;
 }

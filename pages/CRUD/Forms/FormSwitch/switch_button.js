@@ -7,21 +7,22 @@ const Button_hover=styled(Button)`
 &:hover{
     opacity:0.7 !important;
     transform:scale(1.05) !important;
-}
-`
+}`
+
 export default class SwitchButton extends Component{
     render(){
         const {type}=this.props
         return(
             <testPageContext.Consumer>
             {value=>{
-                const {changeState}=value??{}
+                const {changeState,formState}=value??{}
+                const variant=type===formState?"primary":'secondary'
                 const onClick=()=>changeState({
                     formState:type,
                     data:{},
                     where:{},
                 })
-                return <Button_hover variant="primary" onClick={onClick}>{type}</Button_hover>
+                return <Button_hover variant={variant} onClick={onClick}>{type}</Button_hover>
             }}
             </testPageContext.Consumer>
         )

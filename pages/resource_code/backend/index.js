@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import OnloadAnimatedContainer from '../OnloadAnimatedContainer';
+import Headers from '../Headers';
 
 export default class Backend extends Component{
     state={
@@ -15,10 +16,20 @@ export default class Backend extends Component{
         const {endpoints}=this.state
         return(
             <OnloadAnimatedContainer>
+                <Headers>Backend:</Headers>
+
                 Endpoints:
                 {
-                    endpoints?.map(x=><div>{x}</div>)
+                    endpoints?.map((x,i)=><div key={i}>{x}</div>)
                 }
+
+
+                <div>
+                    Cały kod dostępny jest w repozytorium pod adresem:
+                </div>
+                <div>
+                    https://github.com/M1chae1M/0authBackend
+                </div>
             </OnloadAnimatedContainer>
         )
     }

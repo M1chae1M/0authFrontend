@@ -13,7 +13,7 @@ import NeedToLoginModal from './CRUD/NeedToLoginModal';
 import MessageNoDB from './CRUD/MessageNoDB';
 import MainTable from './CRUD/MainTable';
 import _ from 'lodash';
-import TablePages from './CRUD/pagination';
+import TablePagination from './CRUD/pagination';
 
 export const testPageContext=React.createContext()
 
@@ -102,7 +102,7 @@ class App extends Component{
             <MainTable/>
             <MessageNoDB/>
           </TableContainer>
-          <TablePages limit={limit}/>
+          <TablePagination limit={limit}/>
           <ButtonGroup>
             <FormSwitches/>
           </ButtonGroup>

@@ -3,6 +3,8 @@ const li_styles={
     gridAutoFlow:'column',
     alignItems:'center',
     gridGap:'15px',
+    direction:'rtl',
+    gridTemplateColumns:'reverse',
 }
 
 const ProfileBTN=({children, onClick})=>(

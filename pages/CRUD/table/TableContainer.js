@@ -1,6 +1,6 @@
 const styles={
     height:'200px',
-    overflowY:'scroll',
+    overflowY:'auto',
     display:'grid',
     justifyItems:'center',
     alignItems:'center',

@@ -1,8 +1,8 @@
 import {useInView} from 'react-intersection-observer';
 import React from 'react';
 
-function OnloadAnimatedContainer({children}) {
-  const [ref, inView] = useInView({});
+function OnloadAnimatedContainer({children}){
+  const [ref, inView]=useInView({});
     const elementStyles={
       opacity: '0',
       transform: 'translateX(250px)',

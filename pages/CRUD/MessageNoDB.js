@@ -4,8 +4,9 @@ const MessageNoDB=()=>(
     <testPageContext.Consumer>
     {value=>{
         const {logged,db,db_loading}=value??{}
+        const length=db?.length ?? 0
         return(
-            db?.length===0 && !db_loading &&
+            length===0 && !db_loading &&
             <div>
                 {logged?'Brak danych. Spróbuj dodać nowy rekord do bazy danych!':'Nie jesteś zalogowany.'}
             </div>

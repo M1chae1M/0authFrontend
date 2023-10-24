@@ -1,4 +1,4 @@
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./profile_options/ProfileMenu";
 import MenuHeader from "./MenuHeader";
 import NavButtons from "./NavButtons";
 

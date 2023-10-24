@@ -1,25 +1,17 @@
+import CONFIG from '../config/config.json'
+import '../styles/scrollbar.css';
+
 export const fields=['id','name','age','email','city','country','occupation','salary']
 export const CRUD=['select','insert','update','delete']
 
-const url='http://localhost:8080'
+const url=CONFIG.production?CONFIG.url:'http://localhost:8080'
 
-export default function App({ Component, pageProps}){
+export default function App({Component, pageProps}){
   return <Component {...pageProps} url={url}/>
 }
 
-export function selectAll(component){
-  fetch(`${url}/all`,{
-    method:'POST',
-    credentials:'include',
-    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-    body:JSON.stringify({})
-  })
-  .then(res=>res.json())
-  .then(({data})=>component.setState({db:data, db_loading:false}))
-  .catch(error=>{
-    console.error('Błąd logowania:', error)
-    component.setState({db:[],db_loading:false})
-  });
+function getToken(){
+  return localStorage?.getItem?.('token')??''
 }
 
 export async function createFetch(path, body, callback=null){
@@ -27,7 +19,7 @@ export async function createFetch(path, body, callback=null){
     method:'POST',
     credentials:'include',
     headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
-    body:JSON.stringify(body)
+    body:JSON.stringify({...body, token:getToken()})
   })
   .then(res=>res.json())
   .then(data=>{
@@ -36,4 +28,19 @@ export async function createFetch(path, body, callback=null){
     }
   })
   .catch(error =>console.error('Błąd logowania:', error));
+}
+
+export function selectAll(component,page,limit){
+  fetch(`${url}/all/${page}/${limit}`,{
+    method:'POST',
+    credentials:'include',
+    headers:{'Accept': 'application/json', 'Content-Type': 'application/json'},
+    body:JSON.stringify({token:getToken()})
+  })
+  .then(res=>res.json())
+  .then((data)=>component.setState({db:data, db_loading:false}))
+  .catch(error=>{
+    console.error('Błąd logowania:', error)
+    component.setState({db:[],db_loading:false})
+  })
 }

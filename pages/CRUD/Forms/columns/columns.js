@@ -5,7 +5,7 @@ const styles={
         padding: '20px',
         borderRadius: '5px',
         position:'relative',
-        overflowY:'scroll',
+        overflowY:'auto',
         maxHeight:'300px',
         height:'300px',
     },

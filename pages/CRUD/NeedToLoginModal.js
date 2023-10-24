@@ -8,7 +8,7 @@ const NeedToLoginModal=()=>(
     {value=>{
         const {showModal,closeModal,logged}=value??{}
         return(
-            <Modal show={!logged && showModal}>
+            <Modal show={showModal && !logged}>
                 <DisplayAlert text='Wpierw się zaloguj!'>
                     Aby wykonywać zapytania do bazy danych musisz być użytkownikiem zalogowanym.
                     <CloseButton onClick={closeModal}/>

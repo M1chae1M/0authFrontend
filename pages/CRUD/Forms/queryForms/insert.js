@@ -1,6 +1,5 @@
 import {Component} from "react";
 import {Form} from "react-bootstrap";
-// import {testPageContext} from "../..";
 import {testPageContext} from "@/pages";
 import {fields} from "@/pages/_app";
 import Where_list_element from "../columns/where_list_element";

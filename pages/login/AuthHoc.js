@@ -16,25 +16,20 @@ const AuthHOC=(ToWrap)=>(
             password:'login',
             email:'',
             age:'',
+            showProfileState:false,
         }
         isLogged(comp){
-            fetch(`${comp.props.url}/logged`,{
-                method:'GET',
-                credentials:'include',
-                headers:{'Accept':'application/json','Content-Type':'application/json'}
-            })
-            .then(res=>res.json())
-            .then(data=>{
+             createFetch('logged',{},(data)=>{
                 const path=Router.asPath.split('?')[0]?.split('/')[1];
-                console.log(data)
-                comp.setState({logged:data.logged})
-                data.logged && (path==='login' || path==='signin') && Router?.push?.('/');
+                comp.setState({logged:data.logged},()=>{
+                    data.logged && (path==='login' || path==='signin') && Router?.push?.('/');
+                })
             })
-            .catch(error =>console.error('Błąd logowania:', error));
         }
         shouldComponentUpdate(nextProps, nextState){
-            const {logged,login_loading_state}=this.state
-            if(nextState.logged!==logged || nextState.login_loading_state!==login_loading_state) return true
+            const {logged,login_loading_state,login,password,email,age}=this.state
+            const isFormChanged=nextState.login!==login || nextState.password!==password || nextState.email!==email || nextState.age!==age
+            if(nextState.logged!==logged || nextState.login_loading_state!==login_loading_state || isFormChanged) return true
             return false; 
         }
         componentDidMount(){
@@ -46,6 +41,7 @@ const AuthHOC=(ToWrap)=>(
         render(){
             const {url}=this.props
             const {login_loading_state,login,password,email,age,logged}=this.state
+            const {showProfileState}=this.state
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged(this)
             const changeAuthHOC=(newState)=>this.setState(newState)
@@ -53,12 +49,14 @@ const AuthHOC=(ToWrap)=>(
                 const {name,value}=e.target
                 this.setState({[name]:value})
             }
+            const showProf=(newState)=>this.setState({showProfileState:newState})
             const loginCreator=(e, path, send)=>{
                 e.preventDefault()
                 this.setState({login_loading_state:true})
-                createFetch(path,send,(data)=>{
-                    console.log(data)
-                    this.setState({login_loading_state:false, logged:data.success})
+
+                createFetch(`${path}`,send,(data)=>{
+                    localStorage.setItem('token',data.token);
+                    this.setState({login_loading_state:false, logged:data.success??true})
                     data.success && Router?.push?.('/');
                 })
             }
@@ -71,15 +69,16 @@ const AuthHOC=(ToWrap)=>(
                 loginCreator(e, 'signin', {username:login,password,email,age})
             }
             const logout=()=>{
-                createFetch('logout',{},(data)=>{
-                    console.log(data)
-                    this.setState({logged:false},isLoggedFunction())
-                })
+                localStorage.removeItem('token')
+                this.setState({logged:false},isLoggedFunction())
             }
             return(
-                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction}}>
+                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showProf,showProfileState}}>
                     <Menu/>
-                    <ToWrap isLoggedFunction={isLoggedFunction} logged={logged} formData={formData} signinWithLogin={signinWithLogin} loginFunction={loginFunction} changeV={changeV} changeAuthHOC={changeAuthHOC} url={url} {...this.props}/>
+                    <ToWrap
+                    showProf={showProf}
+                    showProfileState={showProfileState}
+                    isLoggedFunction={isLoggedFunction} logged={logged} signinWithLogin={signinWithLogin} changeV={changeV} changeAuthHOC={changeAuthHOC} url={url} {...this.props}/>
                     <Modal show={login_loading_state}>
                         <Spinner/>
                     </Modal>

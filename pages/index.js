@@ -10,8 +10,8 @@ import TableContainer from './CRUD/table/TableContainer';
 import SelectedData from './CRUD/SelectedData';
 import AuthHOC from './login/AuthHoc';
 import NeedToLoginModal from './CRUD/NeedToLoginModal';
-import MessageNoDB from './CRUD/MessageNoDB';
-import MainTable from './CRUD/MainTable';
+import MessageNoDB from './CRUD/table/MessageNoDB';
+import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 

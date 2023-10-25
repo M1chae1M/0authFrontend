@@ -5,7 +5,7 @@ import TableContainer from './table/TableContainer';
 import Table from 'react-bootstrap/Table';
 import {testPageContext} from "..";
 import BuildTHEAD from "./table/BuildTHEAD";
-import TBODY from "./table/tbody";
+import TBODY from "./table/MainTable";
 
 const SelectedData=()=>(
     <testPageContext.Consumer>

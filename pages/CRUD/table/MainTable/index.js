@@ -1,8 +1,8 @@
-import THEAD from './table/thead';
-import TBODY from './table/tbody';
+import THEAD from './thead';
+import TBODY from './tbody';
 import Table from 'react-bootstrap/Table';
-import {testPageContext} from '..';
-import {fields} from '../_app';
+import {testPageContext} from '../../..';
+import {fields} from '../../../_app';
 
 const MainTable=()=>(
     <testPageContext.Consumer>

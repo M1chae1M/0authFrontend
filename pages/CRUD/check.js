@@ -1,9 +1,20 @@
-import React, {Component} from "react";
 import Form from 'react-bootstrap/Form';
+import styled from "styled-components";
 
-export default class Check extends Component{
-    render(){
-        const {value, onChange}=this.props
-        return <Form.Check key={value} type="checkbox" label={value} value={value} id="formHorizontalRadios1" className="custom-control custom-radio custom-control-inline" onChange={onChange}/>
-    }
+const CheckboxStyled=styled(Form.Check)`
+transition:all 0.2s ease-in-out;
+&:hover > *{
+    scale:1.2;
+    color:#007bff;
 }
+&:hover > input{
+    border:solid #007bff 1px;
+    opacity:0.7;
+}`
+
+const className="custom-control custom-radio custom-control-inline"
+const Check=({value, onChange})=>(
+    <CheckboxStyled key={value} type="checkbox" label={value} value={value} className={className} onChange={onChange}/>
+)
+
+export default Check

@@ -103,7 +103,7 @@ class App extends Component{
             <MessageNoDB/>
           </TableContainer>
           <TablePagination limit={limit}/>
-          <ButtonGroup>
+          <ButtonGroup style={{marginBottom:'15px'}}>
             <FormSwitches/>
           </ButtonGroup>
           <FormHOC/>

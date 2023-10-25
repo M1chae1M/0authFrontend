@@ -31,7 +31,6 @@ const FormHOC=()=>(
             <Form onSubmit={submit}>
                 <Container>
                     <Row>
-                        <div><Label>{formState} form</Label></div>
                         {QueryForm}
                         <Button variant="primary" type="submit" style={button}>submit</Button>
                     </Row>

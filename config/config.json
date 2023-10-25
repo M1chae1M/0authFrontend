@@ -1,6 +1,6 @@
 {
-    "production":false,
-    "url":"http://localhost:8080",
+    "production":true,
+    "url":"https://0auth-backend.vercel.app",
     "url2":"https://0auth-backend.vercel.app",
-    "frontend":"http://localhost:3000"
+    "frontend":"https://0auth-frontend.vercel.app"
 }

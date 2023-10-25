@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy":"git add . && git commit -m '.' && git push -f origin main && vercel"
+    "deploy": "git add . && git commit -m '.' && git push -f origin main && vercel"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
     "dotenv": "^16.3.1",
+    "lodash": "^4.17.21",
     "next": "^13.5.6",
     "pg": "^8.11.3",
     "react": "18.2.0",

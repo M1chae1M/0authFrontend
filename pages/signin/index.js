@@ -9,15 +9,14 @@ class Signin extends Component{
         return(
             <ContextOfAuthHOC.Consumer>
             {value=>{
-                const {formData,FormElement}=value??{}
-                const {login,password,email,age}=formData
+                const {FormElement}=value??{}
                 return(
                     <Form onSubmit={signinWithLogin}>
                         <div>Signin with:</div>
-                        <FormElement name="login" type="text" value={login}/>
-                        <FormElement name="password" type="password" value={password}/>
-                        <FormElement name="email" type="text" value={email}/>
-                        <FormElement name="age" type="number" value={age}/>
+                        <FormElement name="login" type="text"/>
+                        <FormElement name="password" type="password"/>
+                        <FormElement name="email" type="text"/>
+                        <FormElement name="age" type="number"/>
                         <LoginLogos changeAuthHOC={changeAuthHOC} url={url}/>
                     </Form>
                 )

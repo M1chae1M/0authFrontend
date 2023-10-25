@@ -76,10 +76,10 @@ const AuthHOC=(ToWrap)=>(
                 localStorage.removeItem('token')
                 this.setState({logged:false},isLoggedFunction())
             }
-            const FormElement=({name, value, type})=>(
+            const FormElement=({name, type})=>(
                 <Element>
                     <Label>{name.charAt(0).toUpperCase() + name.slice(1)}: </Label>
-                    <Control type={type} placeholder={`Enter your ${name}`} name={name} value={value} onChange={changeV}/>
+                    <Control type={type} placeholder={`Enter your ${name}`} name={name} value={formData?.[name]} onChange={changeV}/>
                 </Element>
             )
             return(

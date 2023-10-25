@@ -10,13 +10,12 @@ class Login extends Component{
         return(
             <ContextOfAuthHOC.Consumer>
             {value=>{
-                const {formData,loginFunction,FormElement}=value??{}
-                const {login, password}=formData
+                const {loginFunction,FormElement}=value??{}
                 return(
                     <Form onSubmit={loginFunction}>
                         <div>Login with:</div>
-                        <FormElement name="login" type="text" value={login}/>
-                        <FormElement name="password" type="password" value={password}/>
+                        <FormElement name="login" type="text"/>
+                        <FormElement name="password" type="password"/>
                         <LoginLogos changeAuthHOC={changeAuthHOC} url={url}/>
                     </Form>
                 )

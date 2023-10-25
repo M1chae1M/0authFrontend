@@ -8,8 +8,9 @@ const MainTable=()=>(
     <testPageContext.Consumer>
     {value=>{
         const {db,db_loading}=value??{}
+        const loading_finished=db?.length>0 && !db_loading
         return(
-            ((db?.length>0 && !db_loading) || db_loading) &&
+            (loading_finished || db_loading) &&
             <Table striped bordered hover>
                 <THEAD fields={fields}/>
                 <TBODY db={db} loading={db_loading} fields={fields}/>

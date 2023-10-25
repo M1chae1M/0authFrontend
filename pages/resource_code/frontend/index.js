@@ -1,34 +1,44 @@
-import React from 'react';
+import React, {Component} from 'react';
 import OnloadAnimatedContainer from '../OnloadAnimatedContainer';
 import Headers from '../Headers';
+import GoToRepo from '../GoToRepo';
+import List from '../List';
 
-const Frontend=()=>(
-    <OnloadAnimatedContainer>
-        <Headers>Frontend:</Headers>
-
-        <div>
-        Frontend powstał przy użyciu:
-        </div>
-        <div>next.js</div>
-        <div>styled-components</div>
-        <div>react-bootstrap</div>
-        <div>react-icons</div>
-        <div>react-intersection-observer</div>
-        <div>react-paginate</div>
-
-        <div>Dostępne są podstrony:</div>
-        <div>/ - główna zawierająca CRUDA (strona dostępna bez logowania, jednak nie pozwoli na manipulowanie bazą danych)</div>
-        <div>/login - strona dostępna tylko jeśli nie jesteś już zalogowany</div>
-        <div>/signin - strona dostępna tylko jeśli nie jesteś już zalogowany</div>
-        <div>/resource_code - strona na której się aktualnie znajdujesz</div>
-        <div>/login/login_success i /login/login_failure są to ścieżki do których jest przykierowywany użytkownik
-            po próbie zalogowania się przez: google, facebooka, czy github</div>
-        <div>Cały kod dostępny jest w repozytorium, które znajduje się tutaj:</div>
-        <div>
-https://github.com/M1chae1M/0authFrontend
-
-        </div>
-    </OnloadAnimatedContainer>
-)
+class Frontend extends Component{
+    state={
+        endpoints:[],
+        problems:[],
+        used_package:[],
+    }
+    componentDidMount(){
+        fetch(`${this.props.url}/`)
+        .then(res=>res.json())
+        .then(res=>this.setState({
+            endpoints:res.frontend.endpoints,
+            problems:res.frontend.problems,
+            used_package:res.frontend.used_package,
+        }))
+        .catch(err=>console.log(err))
+    }
+    render(){
+        const {endpoints,problems,used_package}=this.state
+        const EndpointsList=()=><List array={endpoints}/>
+        const ProblemsList=()=><List array={problems}/>
+        const PackageList=()=><List array={used_package}/>
+        return(
+            <OnloadAnimatedContainer>
+                <Headers>Backend:</Headers>
+                <div>Backend powstał przy użyciu:</div>
+                <PackageList/>
+                <div>Problemy podczas tworzenia aplikacji</div>
+                <ProblemsList/>
+                Endpoints:
+                <EndpointsList/>
+                <div>Cały kod dostępny jest w repozytorium pod adresem:</div>
+                <GoToRepo href='0authBackend'/>
+            </OnloadAnimatedContainer>
+        )
+    }
+}
 
 export default Frontend;

@@ -4,19 +4,13 @@ import Readme from "./readme";
 import Frontend from "./frontend";
 import Backend from "./backend";
 
-// const fronteund_url=''
-// const backend=''
-
-// `https://github.com/M1chae1M/${fronteund_url}`
-// `https://github.com/M1chae1M/${backend}`
-
 class ResourceCode extends Component{
     render(){
         const {url}=this.props
         return(
             <div>
                 <Readme/>
-                <Frontend/>
+                <Frontend url={url}/>
                 <Backend url={url}/>
             </div>
         )

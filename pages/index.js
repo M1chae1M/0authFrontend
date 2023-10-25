@@ -48,11 +48,11 @@ class App extends Component{
     const {page,limit}=this.state
     selectAll(this,page,limit)
   }
-  componentDidCatch(error, errorInfo) {
-    // this.setState({ hasError: true });
-    alert('teraz jest error')
-    // Tutaj możesz zalogować błąd do serwisu monitorowania błędów
-  }
+  // componentDidCatch(error, errorInfo) {
+  //   // this.setState({ hasError: true });
+  //   alert('teraz jest error')
+  //   // Tutaj możesz zalogować błąd do serwisu monitorowania błędów
+  // }
   render(){
     const {db,formState,data,where,db_loading,reqData,selectLoading,showModal,page,limit}=this.state
     const {logged,isLoggedFunction}=this.props

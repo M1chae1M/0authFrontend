@@ -9,8 +9,7 @@ const MainTable=()=>(
     {value=>{
         const {db,db_loading}=value??{}
         return(
-            // db?.length>0 &&
-            // !db_loading &&
+            ((db?.length>0 && !db_loading) || db_loading) &&
             <Table striped bordered hover>
                 <THEAD fields={fields}/>
                 <TBODY db={db} loading={db_loading} fields={fields}/>

@@ -12,7 +12,7 @@ export default class LoginLogos extends Component{
     }
     componentDidMount(){
         window.addEventListener('message', (e)=>{
-            if (e?.data) {
+            if(e?.data){
                 const {login_state}=e.data
                 console.log(e.data.success)
                 if(login_state===false){

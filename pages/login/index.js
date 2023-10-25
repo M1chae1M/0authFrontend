@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import AuthHOC from "@/pages/login/AuthHoc";
 import LoginLogos from "./login_logos";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
+import Element from "../CRUD/Forms/columns/Element";
 
 const {Label, Control}=Form
 
@@ -17,10 +18,14 @@ class Login extends Component{
                 return(
                     <Form onSubmit={loginFunction}>
                         <div>Login with:</div>
-                        <Label>Login: </Label>
-                        <Control type="text" placeholder="Enter your login" name='login' value={login} onChange={changeV}/>
-                        <Label>Password: </Label>
-                        <Control type="password" placeholder="Enter your password" name='password' value={password} onChange={changeV}/>
+                        <Element>
+                            <Label>Login: </Label>
+                            <Control type="text" placeholder="Enter your login" name='login' value={login} onChange={changeV}/>
+                        </Element>
+                        <Element>
+                            <Label>Password: </Label>
+                            <Control type="password" placeholder="Enter your password" name='password' value={password} onChange={changeV}/>
+                        </Element>
                         <LoginLogos changeAuthHOC={changeAuthHOC} url={url}/>
                     </Form>
                 )

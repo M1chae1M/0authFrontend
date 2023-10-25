@@ -21,7 +21,7 @@ const Frontend=()=>(
         <div>/login - strona dostępna tylko jeśli nie jesteś już zalogowany</div>
         <div>/signin - strona dostępna tylko jeśli nie jesteś już zalogowany</div>
         <div>/resource_code - strona na której się aktualnie znajdujesz</div>
-        <div>/login/success i /login/failure są to ścieżki do których jest przykierowywany użytkownik
+        <div>/login/login_success i /login/login_failure są to ścieżki do których jest przykierowywany użytkownik
             po próbie zalogowania się przez: google, facebooka, czy github</div>
         <div>Cały kod dostępny jest w repozytorium, które znajduje się tutaj:</div>
         <div>

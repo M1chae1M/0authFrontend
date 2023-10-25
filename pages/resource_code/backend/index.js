@@ -20,10 +20,9 @@ export default class Backend extends Component{
 
                 Endpoints:
                 {
+                    // endpoints?.map((x,i)=><div key={i}>{x}</div>)
                     endpoints?.map((x,i)=><div key={i}>{x}</div>)
                 }
-
-
                 <div>
                     Cały kod dostępny jest w repozytorium pod adresem:
                 </div>

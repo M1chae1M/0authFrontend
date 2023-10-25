@@ -3,9 +3,6 @@ import Form from 'react-bootstrap/Form';
 import AuthHOC from "@/pages/login/AuthHoc";
 import LoginLogos from "./login_logos";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
-import Element from "../CRUD/Forms/columns/Element";
-
-const {Label, Control}=Form
 
 class Login extends Component{
     render(){
@@ -13,19 +10,13 @@ class Login extends Component{
         return(
             <ContextOfAuthHOC.Consumer>
             {value=>{
-                const {changeV,formData,loginFunction}=value??{}
+                const {formData,loginFunction,FormElement}=value??{}
                 const {login, password}=formData
                 return(
                     <Form onSubmit={loginFunction}>
                         <div>Login with:</div>
-                        <Element>
-                            <Label>Login: </Label>
-                            <Control type="text" placeholder="Enter your login" name='login' value={login} onChange={changeV}/>
-                        </Element>
-                        <Element>
-                            <Label>Password: </Label>
-                            <Control type="password" placeholder="Enter your password" name='password' value={password} onChange={changeV}/>
-                        </Element>
+                        <FormElement name="login" type="text" value={login}/>
+                        <FormElement name="password" type="password" value={password}/>
                         <LoginLogos changeAuthHOC={changeAuthHOC} url={url}/>
                     </Form>
                 )

@@ -4,6 +4,10 @@ import {createFetch} from "../_app"
 import Menu from "../Menu";
 import Modal from "../Modal";
 import Spinner from "../Modal/Spinner";
+import Element from "../CRUD/Forms/columns/Element";
+import Form from 'react-bootstrap/Form';
+
+const {Label, Control}=Form
 
 export const ContextOfAuthHOC=React.createContext()
 
@@ -72,8 +76,14 @@ const AuthHOC=(ToWrap)=>(
                 localStorage.removeItem('token')
                 this.setState({logged:false},isLoggedFunction())
             }
+            const FormElement=({name, value, type})=>(
+                <Element>
+                    <Label>{name.charAt(0).toUpperCase() + name.slice(1)}: </Label>
+                    <Control type={type} placeholder={`Enter your ${name}`} name={name} value={value} onChange={changeV}/>
+                </Element>
+            )
             return(
-                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showProf,showProfileState}}>
+                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showProf,showProfileState,FormElement}}>
                     <Menu/>
                     <ToWrap
                     showProf={showProf}

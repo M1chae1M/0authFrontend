@@ -1,5 +1,12 @@
 import DisplayAlert from "@/pages/Modal/DisplayAlert"
 import CloseButton from "@/pages/Modal/DisplayAlert/CloseButton"
+import styled from "styled-components"
+
+const BTNstyled=styled.button`
+transition:all 0.2s ease-in-out;
+&:hover{
+    scale:1.1 !important;
+}`
 
 const styles={
     DisplayAlert:{
@@ -17,12 +24,8 @@ const DeleteModal=({onClick, deleteAgree})=>(
             Ta operacja będzie nieodwracalna, jednak będziesz mógł założyć nowe konto na ten sam mail, lub konto w wybranym serwisie społecznościowym.
         </div>
         <div>
-            <button id="toggle-menu" className="btn btn-primary" onClick={deleteAgree}>
-                <i className="fas fa-user"></i> Tak
-            </button>
-            <button id="toggle-menu" className="btn btn-secondary" style={styles.lowerButton} onClick={onClick}>
-                <i className="fas fa-user"></i> Nie
-            </button>
+            <BTNstyled id="toggle-menu" className="btn btn-primary" onClick={deleteAgree}>Tak</BTNstyled>
+            <BTNstyled id="toggle-menu" className="btn btn-secondary" style={styles.lowerButton} onClick={onClick}>Nie</BTNstyled>
         </div>
         <CloseButton onClick={onClick}/>
     </DisplayAlert>

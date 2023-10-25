@@ -18,7 +18,7 @@ export default class SelectForm extends Component{
                 return(
                     <>
                         <LeftColumn>
-                            <Label>Data: </Label>
+                            <div><Label>Data: </Label></div>
                             {DataFields}
                         </LeftColumn>
                         <RightColumn>

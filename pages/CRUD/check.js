@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const CheckboxStyled=styled(Form.Check)`
 transition:all 0.2s ease-in-out;
-&:hover > *{
+&:hover > * {
     scale:1.2;
     color:#007bff;
 }

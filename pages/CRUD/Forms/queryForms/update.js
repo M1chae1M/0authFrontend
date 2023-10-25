@@ -21,7 +21,7 @@ export default class UpdateForm extends Component{
                 return(
                     <>
                         <LeftColumn>
-                            <Label>Data: </Label>
+                            <div><Label>Data: </Label></div>
                             {DataFields}
                             {DataInputs}
                         </LeftColumn>

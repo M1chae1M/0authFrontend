@@ -21,6 +21,7 @@ export default class TablePagination extends Component{
             right:'0%',
             justifyContent:'end',
             gridAutoFlow:'column',
+            marginTop:'15px',
         }
         return(
             <testPageContext.Consumer>

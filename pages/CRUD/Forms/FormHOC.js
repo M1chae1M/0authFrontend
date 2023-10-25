@@ -8,8 +8,13 @@ import {Form} from "react-bootstrap";
 import {testPageContext} from "@/pages";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import styled from "styled-components";
 
-const {Label}=Form
+const SubmitButton=styled(Button)`
+transition:all 0.2s ease-in-out;
+&:hover{
+    transform:scale(1.01);
+}`
 
 const FormHOC=()=>(
     <testPageContext.Consumer>
@@ -32,7 +37,7 @@ const FormHOC=()=>(
                 <Container>
                     <Row>
                         {QueryForm}
-                        <Button variant="primary" type="submit" style={button}>submit</Button>
+                        <SubmitButton variant="primary" type="submit" style={button}>submit</SubmitButton>
                     </Row>
                 </Container>
             </Form>

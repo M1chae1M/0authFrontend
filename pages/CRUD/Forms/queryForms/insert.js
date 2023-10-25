@@ -15,7 +15,7 @@ export default class InsertForm extends Component{
                 const DataInputs=fields?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,'data',x)}/>)
                 return(
                     <OneColumn>
-                        <Label>Data: </Label>
+                        <div><Label>Data: </Label></div>
                         {DataInputs}
                     </OneColumn>
                 )

@@ -35,7 +35,7 @@ class Frontend extends Component{
                 Endpoints:
                 <EndpointsList/>
                 <div>Cały kod dostępny jest w repozytorium pod adresem:</div>
-                <GoToRepo href='0authBackend'/>
+                <GoToRepo href='0authFrontend'/>
             </OnloadAnimatedContainer>
         )
     }

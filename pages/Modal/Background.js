@@ -2,7 +2,6 @@ const styles={
     backdropFilter:'blur(1px)',
     width:'100vw',
     height:'100vh',
-    // position:'absolute',
     position:'fixed',
     left:'0',
     top:'0',

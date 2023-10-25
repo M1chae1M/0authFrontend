@@ -21,14 +21,12 @@ export default class ProfileMenu extends Component{
     render(){
         const {display,showOptionModal,result,modalVariant}=this.state
         const styles={
-            container:{
-                position:'absolute',
-                right:'5%',
-                zIndex:5000,
-                margin:0,
-                padding:0,
-                width:'fit-content',
-            },
+            position:'absolute',
+            right:'5%',
+            zIndex:5000,
+            margin:0,
+            padding:0,
+            width:'fit-content',
         }
         return(
             <ContextOfAuthHOC.Consumer>
@@ -62,7 +60,7 @@ export default class ProfileMenu extends Component{
                 return(
                     logged &&
                     <>
-                        <div className="container" style={styles.container}>
+                        <div className="container" style={styles}>
                             {!showOptionModal && <ProfileIcon show={show}/>}
                             <MenuList display={display}>
                                 <ProfileBTN onClick={accountData}>

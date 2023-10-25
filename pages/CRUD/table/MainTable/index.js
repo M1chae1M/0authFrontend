@@ -10,10 +10,13 @@ const MainTable=()=>(
         const {db,db_loading}=value??{}
         return(
             db?.length>0 &&
-            <Table striped bordered hover>
-                <THEAD fields={fields}/>
-                <TBODY db={db} loading={db_loading} fields={fields}/>
-            </Table>
+            <>
+                {db_loading?'tal':'nie'}
+                <Table striped bordered hover>
+                    <THEAD fields={fields}/>
+                    <TBODY db={db} loading={db_loading} fields={fields}/>
+                </Table>
+            </>
         )
     }}
     </testPageContext.Consumer>

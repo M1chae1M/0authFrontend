@@ -13,6 +13,7 @@ transition:all 0.2s ease-in-out;
 }`
 
 const className="custom-control custom-radio custom-control-inline"
+
 const Check=({value, onChange})=>(
     <CheckboxStyled key={value} type="checkbox" label={value} value={value} className={className} onChange={onChange}/>
 )

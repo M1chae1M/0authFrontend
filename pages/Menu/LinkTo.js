@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import BlueBTN_hover from '../CRUD/BlueBTN_hover'
+import BlueBTN_hover from '../components/BlueBTN_hover'
 
 const LI=({text})=>(
     <div className="nav-item">

@@ -1,5 +1,5 @@
 import {testPageContext} from "@/pages"
-import THEAD from "./MainTable/thead"
+import THEAD from "../table/MainTable/thead"
 
 const BuildTHEAD=({loadingFields})=>(
     <testPageContext.Consumer>

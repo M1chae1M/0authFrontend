@@ -1,11 +1,11 @@
-import Modal from "../Modal"
-import CloseButton from "../Modal/DisplayAlert/CloseButton"
-import DisplayAlert from "../Modal/DisplayAlert" 
-import TableContainer from './table/TableContainer';
+import Modal from "../../Modal"
+import CloseButton from "../../Modal/DisplayAlert/CloseButton"
+import DisplayAlert from "../../Modal/DisplayAlert" 
+import TableContainer from '../table';
 import Table from 'react-bootstrap/Table';
-import {testPageContext} from "..";
-import BuildTHEAD from "./table/BuildTHEAD";
-import TBODY from "./table/MainTable";
+import {testPageContext} from "../..";
+import BuildTHEAD from "./BuildTHEAD";
+import TBODY from "../table/MainTable";
 
 const SelectedData=()=>(
     <testPageContext.Consumer>

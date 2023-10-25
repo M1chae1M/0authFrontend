@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {BiLogoGithub,BiLogoGoogle,BiLogoFacebookCircle} from 'react-icons/bi'
 import Button from 'react-bootstrap/Button';
-import BlueBTN_hover from "../CRUD/BlueBTN_hover";
+import BlueBTN_hover from "../components/BlueBTN_hover";
 
 const height='44px'
 

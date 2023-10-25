@@ -1,4 +1,4 @@
-import BlueBTN_hover from "@/pages/CRUD/BlueBTN_hover"
+import BlueBTN_hover from "@/pages/components/BlueBTN_hover"
 import DisplayAlert from "@/pages/Modal/DisplayAlert"
 import CloseButton from "@/pages/Modal/DisplayAlert/CloseButton"
 

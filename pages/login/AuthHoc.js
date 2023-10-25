@@ -4,7 +4,7 @@ import {createFetch} from "../_app"
 import Menu from "../Menu";
 import Modal from "../Modal";
 import Spinner from "../Modal/Spinner";
-import FormElementBuilder from "../FormElementBuilder";
+import FormElementBuilder from "../components/FormElementBuilder";
 
 export const ContextOfAuthHOC=React.createContext()
 

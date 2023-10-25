@@ -2,7 +2,7 @@ import {Component} from "react";
 import {Form} from "react-bootstrap";
 import {testPageContext} from "@/pages";
 import {fields} from "@/pages/_app";
-import Check from "../../check";
+import Check from "../../../components/check";
 import {LeftColumn, RightColumn} from "../columns/columns";
 import WHERE from "../WHERE";
 

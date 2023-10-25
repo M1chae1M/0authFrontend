@@ -1,4 +1,4 @@
-import Element from './CRUD/Forms/columns/Element';
+import Element from '../CRUD/Forms/columns/Element';
 import Form from 'react-bootstrap/Form';
 
 const {Label, Control}=Form

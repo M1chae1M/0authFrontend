@@ -1,15 +1,15 @@
 import {Component} from "react"
 import {ContextOfAuthHOC} from "../../login/AuthHoc"
-import ProfileIcon from "./ProfileIcon"
+import ProfileIcon from "./Profile_icon"
 import {createFetch} from "../../_app"
 import {BsPerson,BsTrash,BsBoxArrowRight} from 'react-icons/bs'
-import ProfileBTN from "./ProfileBTN"
-import MenuList from "../List/MenuList"
+import ProfileBTN from "./List/option_BTN/ProfileBTN"
+import MenuList from "./List/MenuList"
 import Modal from "../../Modal"
-import DeleteModal from "../Variants/Delete"
-import AccountDataModal from "../Variants/AccountData"
-import ToAnimateIcon from "./ToAnimateIcon"
-import LogoutModal from "../Variants/Logout"
+import DeleteModal from "./Variants/Delete"
+import AccountDataModal from "./Variants/AccountData"
+import ToAnimateIcon from "./List/option_BTN/ToAnimateIcon"
+import LogoutModal from "./Variants/Logout"
 
 export default class ProfileMenu extends Component{
     state={
@@ -34,7 +34,7 @@ export default class ProfileMenu extends Component{
             <ContextOfAuthHOC.Consumer>
             {value=>{
                 const {logged,logout,isLoggedFunction}=value??{}
-                const {showProf,showProfileState}=value??{}
+                // const {showProf,showProfileState}=value??{}
 
                 const close=()=>this.setState({showOptionModal:false})
                 const show=()=>this.setState({display:!display},isLoggedFunction)

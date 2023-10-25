@@ -1,4 +1,4 @@
-import LoginResult from "../LoginResult";
+import LoginResult from "../../LoginResult";
 import React, {Component} from "react";
 
 export default class Failure extends Component{

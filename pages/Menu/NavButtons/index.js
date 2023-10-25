@@ -1,8 +1,7 @@
 import {Component} from "react"
-import LinkTo from "./LinkTo"
+import LinkTo from "../LinkTo"
 import Router from "next/router"
-import {ContextOfAuthHOC} from "../login/AuthHoc"
-import BlueBTN_hover from "../CRUD/BlueBTN_hover"
+import {ContextOfAuthHOC} from "../../login/AuthHoc"
 
 export default class NavButtons extends Component{
     state={

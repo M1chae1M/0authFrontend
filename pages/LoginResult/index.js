@@ -1,7 +1,7 @@
 import {Component} from "react";
 import DisplayAlert from "@/pages/Modal/DisplayAlert";
 import BlueBTN_hover from "@/pages/CRUD/BlueBTN_hover";
-import CONFIG from '../../../config/config.json'
+import CONFIG from '../../config/config.json'
 const {frontend}=CONFIG
 
 const pageURL=`${frontend}/login`

@@ -4,10 +4,7 @@ import {createFetch} from "../_app"
 import Menu from "../Menu";
 import Modal from "../Modal";
 import Spinner from "../Modal/Spinner";
-import Element from "../CRUD/Forms/columns/Element";
-import Form from 'react-bootstrap/Form';
-
-const {Label, Control}=Form
+import FormElementBuilder from "../FormElementBuilder";
 
 export const ContextOfAuthHOC=React.createContext()
 
@@ -49,8 +46,8 @@ const AuthHOC=(ToWrap)=>(
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged(this)
             const changeAuthHOC=(newState)=>this.setState(newState)
-            const changeV=(e)=>{
-                const {name,value}=e.target
+            const changeV=({target})=>{
+                const {name,value}=target
                 this.setState({[name]:value})
             }
             const showProf=(newState)=>this.setState({showProfileState:newState})
@@ -76,12 +73,7 @@ const AuthHOC=(ToWrap)=>(
                 localStorage.removeItem('token')
                 this.setState({logged:false},isLoggedFunction())
             }
-            const FormElement=({name, type})=>(
-                <Element>
-                    <Label>{name.charAt(0).toUpperCase() + name.slice(1)}: </Label>
-                    <Control type={type} placeholder={`Enter your ${name}`} name={name} value={formData?.[name]} onChange={changeV}/>
-                </Element>
-            )
+            const FormElement=({name, type})=>FormElementBuilder({name, type, formData, changeV})
             return(
                 <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showProf,showProfileState,FormElement}}>
                     <Menu/>

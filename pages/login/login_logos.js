@@ -2,6 +2,7 @@ import {Component} from "react";
 import {BiLogoGithub,BiLogoGoogle,BiLogoFacebookCircle} from 'react-icons/bi'
 import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../CRUD/BlueBTN_hover";
+import {Router} from "next/router";
 
 const height='44px'
 
@@ -13,9 +14,10 @@ export default class LoginLogos extends Component{
         window.addEventListener('message', (e)=>{
             if (e?.data) {
                 const {login_state}=e.data
-
+                console.log(e.data.success)
                 if(login_state===false){
                     changeAuthHOC({login_loading_state:false});
+                    e?.data?.success && Router?.push?.('/');
                 }
             }
         })

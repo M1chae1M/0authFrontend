@@ -4,7 +4,6 @@ import {createFetch} from "../_app"
 import Menu from "../Menu";
 import Modal from "../Modal";
 import Spinner from "../Modal/Spinner";
-import FormElementBuilder from "../components/FormElementBuilder";
 
 export const ContextOfAuthHOC=React.createContext()
 
@@ -17,7 +16,6 @@ const AuthHOC=(ToWrap)=>(
             password:'login',
             email:'',
             age:'',
-            showProfileState:false,
         }
         isLogged(comp){
              createFetch('logged',{},(data)=>{
@@ -42,7 +40,6 @@ const AuthHOC=(ToWrap)=>(
         render(){
             const {url}=this.props
             const {login_loading_state,login,password,email,age,logged}=this.state
-            const {showProfileState}=this.state
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged(this)
             const changeAuthHOC=(newState)=>this.setState(newState)
@@ -50,7 +47,6 @@ const AuthHOC=(ToWrap)=>(
                 const {name,value}=target
                 this.setState({[name]:value})
             }
-            const showProf=(newState)=>this.setState({showProfileState:newState})
             const loginCreator=(e, path, send)=>{
                 e.preventDefault()
                 this.setState({login_loading_state:true})
@@ -73,14 +69,10 @@ const AuthHOC=(ToWrap)=>(
                 localStorage.removeItem('token')
                 this.setState({logged:false},isLoggedFunction())
             }
-            const FormElement=({name, type})=>FormElementBuilder({name, type, formData, changeV})
             return(
-                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showProf,showProfileState,FormElement}}>
+                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url}}>
                     <Menu/>
-                    <ToWrap
-                    showProf={showProf}
-                    showProfileState={showProfileState}
-                    isLoggedFunction={isLoggedFunction} logged={logged} signinWithLogin={signinWithLogin} changeV={changeV} changeAuthHOC={changeAuthHOC} url={url} {...this.props}/>
+                    <ToWrap loginFunction={loginFunction} isLoggedFunction={isLoggedFunction} logged={logged} signinWithLogin={signinWithLogin} changeAuthHOC={changeAuthHOC} url={url} {...this.props}/>
                     <Modal show={login_loading_state}>
                         <Spinner/>
                     </Modal>

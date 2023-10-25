@@ -34,8 +34,6 @@ export default class ProfileMenu extends Component{
             <ContextOfAuthHOC.Consumer>
             {value=>{
                 const {logged,logout,isLoggedFunction}=value??{}
-                // const {showProf,showProfileState}=value??{}
-
                 const close=()=>this.setState({showOptionModal:false})
                 const show=()=>this.setState({display:!display},isLoggedFunction)
                 const accountData=async()=>{

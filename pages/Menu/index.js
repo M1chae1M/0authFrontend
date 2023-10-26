@@ -1,10 +1,10 @@
 import ProfileMenu from "./ProfileMenu";
 import MenuHeader from "./MenuHeader";
 import NavButtons from "./NavButtons";
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import LinkTo from "./LinkTo";
-import { ContextOfAuthHOC } from "../login/AuthHoc";
-import { Component } from "react";
+import {ContextOfAuthHOC} from "../login/AuthHoc";
+import React,{Component} from "react";
 import Router from "next/router";
 
 const style={
@@ -83,12 +83,15 @@ class Menu extends Component{
         const style={
             display:'grid',
             gridAutoFlow:'column',
-            // gridAutoFlow:'row',
             gridGap:'5px',
+            justifyContent:'center',
         }
         return(
             <div style={style}>
-                <div>
+                <div style={{
+                    display:'grid',
+                    justifyItems:'center',
+                }}>
 
             <MenuHeader>CRUD</MenuHeader>
             {/* <NavButtons/> */}

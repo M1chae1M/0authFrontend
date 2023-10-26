@@ -29,7 +29,7 @@ export default class TablePagination extends Component{
                 const {changeState,db}=value??{}
                 const handlePageClick=({selected})=>changeState({page:selected})
                 return(
-                    db?.length &&
+                    db?.length>0 &&
                     <div style={styles}>
                         <ReactPaginate
                             previousLabel={"<"}

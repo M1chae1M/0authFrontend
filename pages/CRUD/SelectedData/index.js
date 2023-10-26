@@ -12,6 +12,8 @@ const SelectedData=()=>(
         const styles={
             minHeight:'20vh',
             minWidth:'40vw',
+            // maxHeight:'20vh',
+            maxWidth:'80%',
         }
         return(
             <Modal show={showModal && logged}>

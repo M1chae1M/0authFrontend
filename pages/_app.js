@@ -44,3 +44,5 @@ export function selectAll(component,page,limit){
     component.setState({db:[],db_loading:false})
   })
 }
+
+export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)

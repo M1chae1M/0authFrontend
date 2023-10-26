@@ -6,7 +6,7 @@ const Readme=()=>(
     <OnloadAnimatedContainer>
         <Headers>Readme:</Headers>
         <div>
-            Aplikacja internetowa, której # główne funkcje, to:
+            Aplikacja internetowa, której główne funkcje, to:
             <ul>
                 <li>nauka pracy z serverless'owym hostingiem</li>
                 <li>Budowa sprawnie działającego CRUD'a</li>

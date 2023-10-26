@@ -4,6 +4,7 @@ const styles={
     display:'grid',
     justifyItems:'center',
     alignItems:'center',
+    marginBottom:'15px',
 }
 
 const TableContainer=({children})=>(

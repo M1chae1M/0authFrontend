@@ -39,7 +39,7 @@ export default class Template extends Component{
                 Endpoints:
                 <EndpointsList/>
                 <div>Cały kod dostępny jest w repozytorium pod adresem:</div>
-                <GoToRepo href={`0auth${name}`}/>
+                <GoToRepo href={name}/>
             </OnloadAnimatedContainer>
         )
     }

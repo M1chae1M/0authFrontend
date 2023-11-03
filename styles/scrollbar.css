@@ -53,20 +53,22 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width:768px){
     .navbar-nav {
-      flex-direction: column; /* Wyświetl linki w menu hamburgerowym w kolumnie */
+      flex-direction:column;
     }
-  
     .navbar-toggler {
-      display: block; /* Wyświetl przycisk hamburgera na małych ekranach */
+      display:block;
     }
-  
     .navbar-collapse {
-      background-color: #fff; /* Tło menu hamburgerowego */
-      padding: 20px; /* Dodatkowy odstęp między linkami */
+      background-color:#fff;
+      padding:20px;
     }
     .nav-pills{
         grid-auto-flow:row !important;
     }
-  }
+    .retractable{
+        display:grid !important;
+        justify-items:center !important;
+    }
+}

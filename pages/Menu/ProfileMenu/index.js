@@ -31,7 +31,7 @@ export default class ProfileMenu extends Component{
         return(
             <ContextOfAuthHOC.Consumer>
             {value=>{
-                const {logged,logout,isLoggedFunction}=value??{}
+                const {logged,logout,isLoggedFunction,showSelected}=value??{}
                 const close=()=>this.setState({showOptionModal:false})
                 const show=()=>this.setState({display:!display},isLoggedFunction)
                 const accountData=async()=>{
@@ -61,14 +61,14 @@ export default class ProfileMenu extends Component{
                     logged &&
                     <>
                         <div className="container" style={styles}>
-                            {!showOptionModal && <ProfileIcon show={show}/>}
+                            {!showOptionModal && !showSelected && <ProfileIcon show={show}/>}
                             <MenuList display={display}>
                                 <ProfileBTN onClick={accountData}>
-                                    <ToAnimateIcon>Twoje dane</ToAnimateIcon>
+                                    <ToAnimateIcon>Your personal data</ToAnimateIcon>
                                     <BsPerson/>
                                 </ProfileBTN>
                                 <ProfileBTN onClick={deleteAccount}>
-                                    <ToAnimateIcon>Usuń konto</ToAnimateIcon>
+                                    <ToAnimateIcon>Delete account</ToAnimateIcon>
                                     <BsTrash/>
                                 </ProfileBTN>
                                 <ProfileBTN onClick={logoutAgree}>

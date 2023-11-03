@@ -1,5 +1,5 @@
 import Template from '../Template';
 
-const Frontend=({url})=><Template variant="frontend" url={url}/>
+const Frontend=()=><Template variant="frontend"/>
 
 export default Frontend;

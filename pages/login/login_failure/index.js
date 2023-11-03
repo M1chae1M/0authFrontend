@@ -3,6 +3,6 @@ import React, {Component} from "react";
 
 export default class Failure extends Component{
   render(){
-    return <LoginResult text='Failure! Coś poszło nie tak. Spróbuj ponownie, lub skorzystaj z innej metody autoryzacji.'/>
+    return <LoginResult text='Failure! Something has gone wrong. Try again, or use another authorization method.'/>
   }
 }

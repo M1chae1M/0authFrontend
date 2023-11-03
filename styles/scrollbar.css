@@ -51,24 +51,3 @@
     opacity:0.7;
     scale:1.2;
 }
-
-
-@media (max-width:768px){
-    .navbar-nav {
-      flex-direction:column;
-    }
-    .navbar-toggler {
-      display:block;
-    }
-    .navbar-collapse {
-      background-color:#fff;
-      padding:20px;
-    }
-    .nav-pills{
-        grid-auto-flow:row !important;
-    }
-    .retractable{
-        display:grid !important;
-        justify-items:center !important;
-    }
-}

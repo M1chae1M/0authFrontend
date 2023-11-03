@@ -7,7 +7,7 @@ const styles={
 }
 
 const AccountDataModal=({onClick,result})=>(
-    <DisplayAlert text='Twoje dane, jakie przechowujemy na twój temat, to:' style={styles}>
+    <DisplayAlert text='Your data that we store about you is:' style={styles}>
         {
             Object?.keys?.(result??{})?.map(field=>(
             <div key={field}>

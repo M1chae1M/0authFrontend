@@ -4,7 +4,7 @@ import '../styles/scrollbar.css';
 export const fields=['id','name','age','email','city','country','occupation','salary']
 export const CRUD=['select','insert','update','delete']
 
-const url=CONFIG.production?CONFIG.url:'http://localhost:8080'
+export const url=CONFIG.production?CONFIG.url:'http://localhost:8080'
 
 export default function App({Component, pageProps}){
   return <Component {...pageProps} url={url}/>

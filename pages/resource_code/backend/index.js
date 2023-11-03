@@ -1,5 +1,5 @@
 import Template from '../Template';
 
-const Backend=({url})=><Template variant="backend" url={url}/>
+const Backend=()=><Template variant="backend"/>
 
 export default Backend

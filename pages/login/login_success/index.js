@@ -3,6 +3,6 @@ import React, { Component } from "react";
 
 export default class Success extends Component{
   render(){
-    return <LoginResult text='Success! Już wiemy, że ty, to ty. Teraz możesz wrócić do przeglądania naszej strony.'/>
+    return <LoginResult text='Success! We already know that you, are you. Now you can get back to browsing our site.'/>
   }
 }

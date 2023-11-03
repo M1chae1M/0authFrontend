@@ -10,7 +10,7 @@ const SelectedDataBody=()=>(
         const loadingFields=data && Object.keys(data)?.length>0 ? Object.keys(data) : fields
         return(
             reqData?.length===0 && !selectLoading ?
-                <div>Niestety wynik zapytania jest pusty, ale możesz to zmienić zmieniając jego kryteria, lub dodając nowe rekordy.</div>:
+                <div>Unfortunately, the query result is empty, but you can change this by changing its criteria, or adding new records.</div>:
             <Table striped bordered hover>
                 <BuildTHEAD loadingFields={loadingFields}/>
                 <TBODY db={reqData} loading={selectLoading} fields={loadingFields}/>

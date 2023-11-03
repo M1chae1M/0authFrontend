@@ -6,12 +6,12 @@ import Backend from "./backend";
 
 class ResourceCode extends Component{
     render(){
-        const {url}=this.props
+        // const {url}=this.props
         return(
             <div>
                 <Readme/>
-                <Frontend url={url}/>
-                <Backend url={url}/>
+                <Frontend/>
+                <Backend/>
             </div>
         )
     }

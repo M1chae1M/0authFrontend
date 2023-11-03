@@ -4,6 +4,7 @@ import DisplayAlert from "../../Modal/DisplayAlert"
 import TableContainer from '../table';
 import {testPageContext} from "../..";
 import SelectedDataBody from "./SelectedDataBody";
+import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
 
 const SelectedData=()=>(
     <testPageContext.Consumer>
@@ -16,14 +17,22 @@ const SelectedData=()=>(
             maxWidth:'80%',
         }
         return(
-            <Modal show={showModal && logged}>
-                <DisplayAlert text='select result:' style={styles}>
-                    <TableContainer>
-                        <SelectedDataBody/>
-                    </TableContainer>
-                    <CloseButton onClick={closeModal}/>
-                </DisplayAlert>
-            </Modal>
+            <ContextOfAuthHOC.Consumer>
+            {value=>{
+                const {changeAuthHOC}=value??{}
+                changeAuthHOC?.({showSelected:showModal && logged});
+                return(
+                    <Modal show={showModal && logged}>
+                        <DisplayAlert text='select result:' style={styles}>
+                            <TableContainer>
+                                <SelectedDataBody/>
+                            </TableContainer>
+                            <CloseButton onClick={closeModal}/>
+                        </DisplayAlert>
+                    </Modal>
+                )
+            }}
+            </ContextOfAuthHOC.Consumer>
         )
     }}
     </testPageContext.Consumer>

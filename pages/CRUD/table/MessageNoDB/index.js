@@ -8,7 +8,7 @@ const MessageNoDB=()=>(
         return(
             length===0 && !db_loading &&
             <div>
-                {logged?'Brak danych. Spróbuj dodać nowy rekord do bazy danych!':'Nie jesteś zalogowany.'}
+                {logged?'Missing data. Try adding a new record to the database!':'You are not logged in.'}
             </div>
         )
     }}

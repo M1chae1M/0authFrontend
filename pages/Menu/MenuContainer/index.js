@@ -3,6 +3,12 @@ const style={
     gridAutoFlow:'column',
     gridGap:'5px',
     justifyContent:'center',
+    position:'sticky',
+    top:'0%',
+    width:'100vw',
+    left:'0%',
+    zIndex:500,
+    background:'white',
 }
 
 const MenuContainer=({children})=>(

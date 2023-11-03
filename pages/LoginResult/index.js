@@ -21,7 +21,7 @@ export default class LoginResult extends Component{
         return(
             <DisplayAlert text={text}>
                 <BlueBTN_hover>
-                    <button type="button" className="btn btn-primary" onClick={onClick}>Wróć</button>
+                    <button type="button" className="btn btn-primary" onClick={onClick}>Return to pageview</button>
                 </BlueBTN_hover>
             </DisplayAlert>
         )

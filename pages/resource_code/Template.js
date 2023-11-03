@@ -4,6 +4,7 @@ import Headers from './Headers';
 import GoToRepo from './GoToRepo';
 import List from './List';
 import {toUpperCase1Char} from '../_app';
+import {url} from '../_app';
 
 export default class Template extends Component{
     state={
@@ -12,7 +13,7 @@ export default class Template extends Component{
         used_package:[],
     }
     componentDidMount(){
-        const {variant,url}=this.props
+        const {variant}=this.props
         fetch(`${url}/`)
         .then(res=>res.json())
         .then(res=>this.setState({
@@ -32,13 +33,13 @@ export default class Template extends Component{
         return(
             <OnloadAnimatedContainer>
                 <Headers>{name}:</Headers>
-                <div>{name} powstał przy użyciu:</div>
+                <div>The {name} was created using:</div>
                 <PackageList/>
-                <div>Problemy podczas tworzenia aplikacji</div>
+                <div>Problems during application development:</div>
                 <ProblemsList/>
                 Endpoints:
                 <EndpointsList/>
-                <div>Cały kod dostępny jest w repozytorium pod adresem:</div>
+                <div>All code is available in the repository at:</div>
                 <GoToRepo href={name}/>
             </OnloadAnimatedContainer>
         )

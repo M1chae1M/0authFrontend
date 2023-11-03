@@ -16,13 +16,13 @@ const styles={
 }
 
 const LogoutModal=({onClick,logout})=>(
-    <DisplayAlert text='Czy na pewno chcesz się wylogować?' style={styles}>
+    <DisplayAlert text='Are you sure you want to log out?' style={styles}>
         <div style={styles.Buttons}>
             <BlueBTN_hover>
-                <button type="button" className="btn btn-primary" onClick={logout}>tak</button>
+                <button type="button" className="btn btn-primary" onClick={logout}>Yes</button>
             </BlueBTN_hover>
             <BlueBTN_hover>
-                <button type="button" className="btn btn-secondary" onClick={onClick}>nie</button>
+                <button type="button" className="btn btn-secondary" onClick={onClick}>No</button>
             </BlueBTN_hover>
         </div>
         <CloseButton onClick={onClick}/>

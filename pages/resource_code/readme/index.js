@@ -6,11 +6,11 @@ const Readme=()=>(
     <OnloadAnimatedContainer>
         <Headers>Readme:</Headers>
         <div>
-            Aplikacja internetowa, której główne funkcje, to:
+            A webapplication whose main functions are:
             <ul>
-                <li>nauka pracy z serverless'owym hostingiem</li>
-                <li>Budowa sprawnie działającego CRUD'a</li>
-                <li>Nauka tworzenia różnych metody autoryzacji przy pomocy passport.js i jego strategii</li>
+                <li>Learning to work with serverless hosting</li>
+                <li>Building an efficient CRUD</li>
+                <li>Learning to create different authentication methods using passport.js and its strategies</li>
             </ul>
         </div>
     </OnloadAnimatedContainer>

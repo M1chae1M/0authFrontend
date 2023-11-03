@@ -16,6 +16,7 @@ const AuthHOC=(ToWrap)=>(
             password:'login',
             email:'',
             age:'',
+            showSelected:false,
         }
         isLogged(comp){
              createFetch('logged',{},(data)=>{
@@ -26,9 +27,9 @@ const AuthHOC=(ToWrap)=>(
             })
         }
         shouldComponentUpdate(nextProps, nextState){
-            const {logged,login_loading_state,login,password,email,age}=this.state
+            const {logged,login_loading_state,login,password,email,age,showSelected}=this.state
             const isFormChanged=nextState.login!==login || nextState.password!==password || nextState.email!==email || nextState.age!==age
-            if(nextState.logged!==logged || nextState.login_loading_state!==login_loading_state || isFormChanged) return true
+            if(nextState.logged!==logged || nextState.login_loading_state!==login_loading_state || isFormChanged || nextState.showSelected!==showSelected) return true
             return false; 
         }
         componentDidMount(){
@@ -39,7 +40,7 @@ const AuthHOC=(ToWrap)=>(
         }
         render(){
             const {url}=this.props
-            const {login_loading_state,login,password,email,age,logged}=this.state
+            const {login_loading_state,login,password,email,age,logged,showSelected}=this.state
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged(this)
             const changeAuthHOC=(newState)=>this.setState(newState)
@@ -70,7 +71,7 @@ const AuthHOC=(ToWrap)=>(
                 this.setState({logged:false},isLoggedFunction())
             }
             return(
-                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url}}>
+                <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showSelected,changeAuthHOC}}>
                     <Menu/>
                     <ToWrap loginFunction={loginFunction} isLoggedFunction={isLoggedFunction} logged={logged} signinWithLogin={signinWithLogin} changeAuthHOC={changeAuthHOC} url={url} {...this.props}/>
                     <Modal show={login_loading_state}>

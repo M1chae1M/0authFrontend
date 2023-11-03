@@ -2,6 +2,7 @@ import {Component} from "react";
 import {BiLogoGithub,BiLogoGoogle,BiLogoFacebookCircle} from 'react-icons/bi'
 import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../components/BlueBTN_hover";
+import {url} from "../_app";
 
 const height='44px'
 
@@ -20,7 +21,7 @@ export default class LoginLogos extends Component{
         })
     }
     render(){
-        const {url,changeAuthHOC}=this.props
+        const {changeAuthHOC}=this.props
         const logos={
             display:'grid',
             gridAutoFlow:'column',

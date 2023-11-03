@@ -19,13 +19,15 @@ const styles={
 }
 
 const DeleteModal=({onClick, deleteAgree})=>(
-    <DisplayAlert text='Czy na pewno chcesz usunąć swoje konto?' style={styles.DisplayAlert}>
+    <DisplayAlert text='Are you sure you want to delete your account?' style={styles.DisplayAlert}>
         <div>
-            Ta operacja będzie nieodwracalna, jednak będziesz mógł założyć nowe konto na ten sam mail, lub konto w wybranym serwisie społecznościowym.
+            This operation will be irreversible,
+            but you will be able to create a new account with the same email,
+            or an account on the social network of your choice.
         </div>
         <div>
-            <BTNstyled id="toggle-menu" className="btn btn-primary" onClick={deleteAgree}>Tak</BTNstyled>
-            <BTNstyled id="toggle-menu" className="btn btn-secondary" style={styles.lowerButton} onClick={onClick}>Nie</BTNstyled>
+            <BTNstyled id="toggle-menu" className="btn btn-primary" onClick={deleteAgree}>Yes</BTNstyled>
+            <BTNstyled id="toggle-menu" className="btn btn-secondary" style={styles.lowerButton} onClick={onClick}>No</BTNstyled>
         </div>
         <CloseButton onClick={onClick}/>
     </DisplayAlert>

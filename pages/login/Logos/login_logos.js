@@ -14,9 +14,7 @@ export default class LoginLogos extends Component{
         window.addEventListener('message',(e)=>{
             if(e?.data){
                 const {login_state}=e.data
-                if(login_state===false){
-                    this.props.changeAuthHOC({login_loading_state:false});
-                }
+                if(login_state===false) this.props.changeAuthHOC({login_loading_state:false});
             }
         })
     }

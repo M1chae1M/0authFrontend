@@ -1,14 +1,15 @@
 import CONFIG from '../config/config.json'
 import '../styles/scrollbar.css';
 
-export const fields=['id','name','age','email','city','country','occupation','salary']
-export const CRUD=['select','insert','update','delete']
-
 export const url=CONFIG.production?CONFIG.url:'http://localhost:8080'
 
 export default function App({Component, pageProps}){
   return <Component {...pageProps} url={url}/>
 }
+
+export const fields=['id','name','age','email','city','country','occupation','salary']
+
+export const CRUD=['select','insert','update','delete']
 
 function getToken(){
   return localStorage?.getItem?.('token')??''
@@ -46,3 +47,5 @@ export function selectAll(component,page,limit){
 }
 
 export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)
+
+export const height='44px'

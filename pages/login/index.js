@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import AuthHOC from "@/pages/login/AuthHoc";
-import LoginLogos from "./login_logos";
+import LoginLogos from "./Logos/login_logos";
 import FormElement from '../components/FormElementBuilder';
 
 const Login=({loginFunction,changeAuthHOC})=>(

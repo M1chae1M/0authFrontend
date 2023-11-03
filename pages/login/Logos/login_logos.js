@@ -1,37 +1,27 @@
 import {Component} from "react";
 import {BiLogoGithub,BiLogoGoogle,BiLogoFacebookCircle} from 'react-icons/bi'
 import Button from 'react-bootstrap/Button';
-import BlueBTN_hover from "../components/BlueBTN_hover";
-import {url} from "../_app";
-
-const height='44px'
+import BlueBTN_hover from "../../components/BlueBTN_hover";
+import {url} from "../../_app";
+import LogosContainer from ".";
+import {height} from "../../_app";
 
 export default class LoginLogos extends Component{
     state={
         messageData:{},
     }
     componentDidMount(){
-        window.addEventListener('message', (e)=>{
+        window.addEventListener('message',(e)=>{
             if(e?.data){
                 const {login_state}=e.data
                 if(login_state===false){
-                    changeAuthHOC({login_loading_state:false});
+                    this.props.changeAuthHOC({login_loading_state:false});
                 }
             }
         })
     }
     render(){
         const {changeAuthHOC}=this.props
-        const logos={
-            display:'grid',
-            gridAutoFlow:'column',
-            justifyItems:'center',
-            alignItems:'center',
-            fontSize:height,
-            lineHeight:height,
-            justifyContent:'space-evenly',
-            color:'#0b5ed7',
-        }
         const logo={
             cursor:'pointer'
         }
@@ -47,12 +37,12 @@ export default class LoginLogos extends Component{
             }, 500);
         }
         return(
-            <div style={logos}>
+            <LogosContainer>
                 <BlueBTN_hover><Button variant="primary" type="submit" style={{height}}>Submit</Button></BlueBTN_hover>
                 <BlueBTN_hover><BiLogoGithub style={logo} onClick={()=>{authenticate('github')}}/></BlueBTN_hover>
                 <BlueBTN_hover><BiLogoGoogle style={logo} onClick={()=>{authenticate('google')}}/></BlueBTN_hover>
                 <BlueBTN_hover><BiLogoFacebookCircle style={logo} onClick={()=>{authenticate('facebook')}}/></BlueBTN_hover>
-            </div>
+            </LogosContainer>
         )
     }
 }

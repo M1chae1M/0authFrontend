@@ -1,7 +1,7 @@
 import CONFIG from '../config/config.json'
 import '../styles/scrollbar.css';
-
-export const url=CONFIG.production?CONFIG.url:'http://localhost:8080'
+const {backend_adres}=process.env??''
+export const url=CONFIG.production?CONFIG.url:backend_adres
 
 export default function App({Component, pageProps}){
   return <Component {...pageProps} url={url}/>

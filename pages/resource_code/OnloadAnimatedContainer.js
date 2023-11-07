@@ -1,25 +1,26 @@
 import {useInView} from 'react-intersection-observer';
 import React from 'react';
 
-function OnloadAnimatedContainer({children}){
+export default function OnloadAnimation({children}){
   const [ref, inView]=useInView({});
-    const elementStyles={
-      opacity: '0',
-      transform: 'translateX(250px)',
+    const styles={
+      transform:'translateX(250px)',
+      opacity:'0',
+      margin:'15px',
+      border:'solid #f0f0f0 1px',
+      padding:'15px',
+      borderRadius:'10px',
+      boxShadow:'2px 2px #e0e0e0',
     }
-    const animationStyles={
-      opacity: '1',
-      transform: 'translateX(0)',
-      transition: 'all 1s ease-in-out',
+    const animation={
+      opacity:'1',
+      transform:'translateX(0)',
+      transition:'all 1s ease-in-out',
     }
-    const styles={...elementStyles, ...(inView ? animationStyles:{})}
-  return (
-    <div ref={ref} style={{overflow:'hidden'}}>
-      <div style={styles}>
-        {children}
-      </div>
+    const style={...styles, ...(inView?animation:{})}
+  return(
+    <div ref={ref} style={style}>
+      {children}
     </div>
-  );
+  )
 }
-
-export default OnloadAnimatedContainer;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import OnloadAnimatedContainer from './OnloadAnimatedContainer';
+import OnloadAnimation from './OnloadAnimatedContainer';
 import Headers from './Headers';
 import GoToRepo from './GoToRepo';
 import List from './List';
@@ -31,7 +31,7 @@ export default class Template extends Component{
         const PackageList=()=><List array={used_package}/>
         const name=toUpperCase1Char(variant)
         return(
-            <OnloadAnimatedContainer>
+            <OnloadAnimation>
                 <Headers>{name}:</Headers>
                 <div>The {name} was created using:</div>
                 <PackageList/>
@@ -41,7 +41,7 @@ export default class Template extends Component{
                 <EndpointsList/>
                 <div>All code is available in the repository at:</div>
                 <GoToRepo href={name}/>
-            </OnloadAnimatedContainer>
+            </OnloadAnimation>
         )
     }
 }

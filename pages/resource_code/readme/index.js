@@ -1,9 +1,9 @@
 import React from 'react';
-import OnloadAnimatedContainer from '../OnloadAnimatedContainer';
+import OnloadAnimation from '../OnloadAnimatedContainer';
 import Headers from '../Headers';
 
 const Readme=()=>(
-    <OnloadAnimatedContainer>
+    <OnloadAnimation>
         <Headers>Readme:</Headers>
         <div>
             A webapplication whose main functions are:
@@ -13,7 +13,7 @@ const Readme=()=>(
                 <li>Learning to create different authentication methods using passport.js and its strategies</li>
             </ul>
         </div>
-    </OnloadAnimatedContainer>
+    </OnloadAnimation>
 )
 
 export default Readme;

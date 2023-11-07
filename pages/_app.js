@@ -1,6 +1,8 @@
 import CONFIG from '../config/config.json'
 import '../styles/scrollbar.css';
-export const url=CONFIG.production?CONFIG.url:'0auth-backend.vercel.app'
+
+export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
+// export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
 
 export default function App({Component, pageProps}){
   return <Component {...pageProps} url={url}/>

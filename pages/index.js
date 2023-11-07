@@ -31,7 +31,6 @@ class App extends Component{
     limit:6,
   }
   componentDidMount(){
-    console.log('3.11.2023')
     const {page,limit}=this.state;
     selectAll(this,page,limit)
   }

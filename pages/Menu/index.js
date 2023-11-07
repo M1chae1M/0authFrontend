@@ -1,12 +1,14 @@
 import ProfileMenu from "./ProfileMenu";
 import MenuHeader from "./MenuContainer/MenuNav/MenuHeader";
-import {Navbar, Nav} from 'react-bootstrap';
+import {Navbar} from 'react-bootstrap';
 import React,{Component} from "react";
 import Router from "next/router";
 import NavPills from "./NavPills";
 import MenuNav from "./MenuContainer/MenuNav";
 import MenuContainer from "./MenuContainer";
 import Toggle from "./MenuContainer/MenuNav/Toggle";
+import dynamic from 'next/dynamic';
+const Nav = dynamic(() => import('react-bootstrap/Nav'), { ssr: false });
 
 export default class Menu extends Component{
     state={
@@ -18,7 +20,7 @@ export default class Menu extends Component{
         this.setState({path:path})
     }
     render(){
-        const {path,display}=this.state
+        const {path,display}=this.state??''
         const style={
             Navbar:{
                 position:'relative',

@@ -59,8 +59,8 @@ const AuthHOC=(ToWrap)=>(
                 })
             }
             const loginFunction=(e)=>{
-                const {login,password}=this.state
-                loginCreator(e, 'login', {username:login,password})
+                const {password,email}=this.state
+                loginCreator(e, 'login', {username:email,password})
             }
             const signinWithLogin=(e)=>{
                 const {login,password,email,age}=this.state

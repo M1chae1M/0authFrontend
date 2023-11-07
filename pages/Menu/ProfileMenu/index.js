@@ -46,7 +46,8 @@ export default class ProfileMenu extends Component{
                     this.setState({display:false,showOptionModal:true,modalVariant:'deleteAccount' });
                 }
                 const deleteAgree=()=>{
-                    createFetch('account/delete',{},()=>this.setState({display:false,showOptionModal:false},isLoggedFunction))
+                    createFetch('account/delete',{},()=>this.setState({display:false,showOptionModal:false},isLoggedFunction));
+                    logout()
                 }
                 const logoutAgree=()=>{
                     this.setState({display:false,showOptionModal:true,modalVariant:'logout' });

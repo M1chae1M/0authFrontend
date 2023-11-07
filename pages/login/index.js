@@ -6,7 +6,7 @@ import FormElement from '../components/FormElementBuilder';
 const Login=({loginFunction,changeAuthHOC})=>(
     <Form onSubmit={loginFunction}>
         <div>Login with:</div>
-        <FormElement name="login" type="text"/>
+        <FormElement name="email" type="text"/>
         <FormElement name="password" type="password"/>
         <LoginLogos changeAuthHOC={changeAuthHOC}/>
     </Form>

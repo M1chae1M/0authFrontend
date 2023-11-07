@@ -39,7 +39,7 @@ export default class LoginLogos extends Component{
                 <BlueBTN_hover><Button variant="primary" type="submit" style={{height}}>Submit</Button></BlueBTN_hover>
                 <BlueBTN_hover><BiLogoGithub style={logo} onClick={()=>{authenticate('github')}}/></BlueBTN_hover>
                 <BlueBTN_hover><BiLogoGoogle style={logo} onClick={()=>{authenticate('google')}}/></BlueBTN_hover>
-                <BlueBTN_hover><BiLogoFacebookCircle style={logo} onClick={()=>{authenticate('facebook')}}/></BlueBTN_hover>
+                {/* <BlueBTN_hover><BiLogoFacebookCircle style={logo} onClick={()=>{authenticate('facebook')}}/></BlueBTN_hover> */}
             </LogosContainer>
         )
     }

@@ -12,7 +12,7 @@ const LinkTo=({h, path, logged})=>{
     return(
         !logged?
         <BlueBTN_hover>
-            <Link className={name} href={`/${h}`}>
+            <Link className={name} href={`/${h}`} style={{color:path===h && 'white'}}>
                 <LI text={h}/>
             </Link>
         </BlueBTN_hover>:

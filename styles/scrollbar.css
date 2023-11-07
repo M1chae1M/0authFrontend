@@ -54,12 +54,3 @@
 body{
     overflow-x:hidden
 }
-
-ul{
-    list-style:none
-}
-li::before{
-    content:"\25A0";
-    color:#0d6efd;
-    margin-right:1em
-}

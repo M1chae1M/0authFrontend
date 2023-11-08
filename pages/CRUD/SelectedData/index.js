@@ -5,48 +5,28 @@ import TableContainer from '../table';
 import {testPageContext} from "../..";
 import SelectedDataBody from "./SelectedDataBody";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
-import {Component} from "react";
+import {useContext} from "react";
+import {useEffect} from "react";
 
-class ChangeContainer extends Component{
-    componentDidMount(){
-        this.props.change?.();
+const SelectedData=()=>{
+    const styles={
+        minHeight:'20vh',
+        minWidth:'40vw',
+        maxWidth:'80%',
     }
-    render(){
-        return this.props.children
-    }
+    const {showModal,closeModal,logged}=useContext(testPageContext)??{};
+    const {changeAuthHOC}=useContext(ContextOfAuthHOC)??{};
+    useEffect(()=>changeAuthHOC?.({showSelected:showModal&&logged}),[showModal,logged,changeAuthHOC]);
+    return(
+        <Modal show={showModal&&logged}>
+            <DisplayAlert text='select result:' style={styles}>
+                <TableContainer>
+                    <SelectedDataBody/>
+                </TableContainer>
+                <CloseButton onClick={closeModal}/>
+            </DisplayAlert>
+        </Modal>
+    )
 }
-
-const SelectedData=()=>(
-    <testPageContext.Consumer>
-    {value=>{
-        const {showModal,closeModal,logged}=value??{}
-        return(
-            <ContextOfAuthHOC.Consumer>
-            {value=>{
-                const {changeAuthHOC}=value??{}
-                const change=()=>changeAuthHOC?.({showSelected:showModal && logged});
-                const styles={
-                    minHeight:'20vh',
-                    minWidth:'40vw',
-                    maxWidth:'80%',
-                }
-                return(
-                    <ChangeContainer change={change}>
-                        <Modal show={showModal && logged}>
-                            <DisplayAlert text='select result:' style={styles}>
-                                <TableContainer>
-                                    <SelectedDataBody/>
-                                </TableContainer>
-                                <CloseButton onClick={closeModal}/>
-                            </DisplayAlert>
-                        </Modal>
-                    </ChangeContainer>
-                )
-            }}
-            </ContextOfAuthHOC.Consumer>
-        )
-    }}
-    </testPageContext.Consumer>
-)
-
+  
 export default SelectedData

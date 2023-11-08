@@ -1,16 +1,16 @@
 const styles={
     Container:{
-        backgroundColor: "#f0f0f0",
-        border: "2px solid #ccc",
-        borderRadius: "10px",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        padding: "20px",
-        margin: "20px",
+        backgroundColor:"#f0f0f0",
+        border:"2px solid #ccc",
+        borderRadius:"10px",
+        boxShadow:"0 2px 4px rgba(0, 0, 0, 0.1)",
+        padding:"20px",
+        margin:"20px",
     },
     Title:{
-        fontSize: "24px",
-        color: "#333",
-        marginBottom: "10px",
+        fontSize:"24px",
+        color:"#333",
+        marginBottom:"10px",
     },
     page:{
         width:'100vw',

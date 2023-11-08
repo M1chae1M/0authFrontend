@@ -7,10 +7,14 @@ const NeedToLoginModal=()=>(
     <testPageContext.Consumer>
     {value=>{
         const {showModal,closeModal,logged}=value??{}
+        const style={
+            display:'grid',
+            justifyItems:'center',
+        }
         return(
             <Modal show={showModal && !logged}>
-                <DisplayAlert text='Wpierw się zaloguj!'>
-                    Aby wykonywać zapytania do bazy danych musisz być użytkownikiem zalogowanym.
+                <DisplayAlert text='Please log in first!' style={style}>
+                    You must be a logged-in user to perform database queries.
                     <CloseButton onClick={closeModal}/>
                 </DisplayAlert>
             </Modal>

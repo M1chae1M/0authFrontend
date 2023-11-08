@@ -14,6 +14,7 @@ import MessageNoDB from './CRUD/table/MessageNoDB';
 import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
+import {db_query_imitacion} from './_app';
 
 export const testPageContext=React.createContext()
 
@@ -43,33 +44,13 @@ class App extends PureComponent{
     const {logged,isLoggedFunction}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>changeState({showModal:false})
-    const imitacion={
-      insert:()=>{
-        const db_copy=[...db];
-        const newRecord=Object.fromEntries(Object.keys(db?.[0] ?? {}).map(x=>[x, '']));
-        db_copy.push({ ...newRecord, ...data, id:null });
-        return db_copy
-      },
-      update:()=>{
-        const db_copy=_.map([...db], item=>{
-          if(_.isMatch(item, where)){
-            return { ...item, ...data };
-          }
-          return item;
-        });
-        return db_copy
-      },
-      delete:()=>{
-        return _.filter([...db], item=>!_.isMatch(item, where));
-      },
-    }
     const submit=async(e)=>{
       e.preventDefault()
       await isLoggedFunction()
       changeState({selectLoading:true, showModal:formState==='select'||!logged?true:false})
       await createFetch(formState,{data, where},(data)=>{
-        const newReqData=imitacion?.[formState]?.() || data
-        const newDB=imitacion?.[formState]?.() || db
+        const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
+        const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
         changeState({reqData:newReqData, db:newDB, selectLoading:false})
       })
     }
@@ -87,7 +68,7 @@ class App extends PureComponent{
     const WhereListInputs=Object.keys(where)?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,'where',x)}/>);
     return(
       <testPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,WhereListFields,WhereListInputs,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
-        <div className="container mt-5">
+        <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
             <MessageNoDB/>

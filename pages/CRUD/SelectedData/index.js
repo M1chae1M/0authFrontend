@@ -11,6 +11,7 @@ import {useEffect} from "react";
 const SelectedData=()=>{
     const styles={
         minHeight:'20vh',
+        minHeight:'40vh',
         minWidth:'40vw',
         maxWidth:'80%',
     }
@@ -20,7 +21,7 @@ const SelectedData=()=>{
     return(
         <Modal show={showModal&&logged}>
             <DisplayAlert text='select result:' style={styles}>
-                <TableContainer>
+                <TableContainer height='30vh'>
                     <SelectedDataBody/>
                 </TableContainer>
                 <CloseButton onClick={closeModal}/>

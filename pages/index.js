@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
@@ -17,7 +17,7 @@ import TablePagination from './CRUD/pagination';
 
 export const testPageContext=React.createContext()
 
-class App extends Component{
+class App extends PureComponent{
   state={
     data:{},
     where:{},
@@ -33,16 +33,6 @@ class App extends Component{
   componentDidMount(){
     const {page,limit}=this.state;
     selectAll(this,page,limit)
-  }
-  shouldComponentUpdate(nextProps, nextState){
-    const {data,where,db,formState,db_loading,reqData,selectLoading,showModal,page,limit}=this.state
-
-    const cond1=nextState.data !== data || nextState.where !== where || nextState.db !== db || nextState.formState !== formState
-    const cond2=nextState.db_loading !== db_loading || nextState.reqData !== reqData || nextState.selectLoading !== selectLoading
-    const cond3=nextState.showModal !== showModal || nextState.page !== page || nextState.limit !== limit
-
-    if(cond1 || cond2 || cond3) return true
-    return false
   }
   componentDidUpdate(){
     const {page,limit}=this.state
@@ -98,7 +88,7 @@ class App extends Component{
     return(
       <testPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,WhereListFields,WhereListInputs,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
         <div className="container mt-5">
-          <TableContainer>
+          <TableContainer height='250px'>
             <MainTable/>
             <MessageNoDB/>
           </TableContainer>

@@ -1,16 +1,15 @@
-const styles={
-    height:'200px',
-    overflowY:'auto',
-    display:'grid',
-    justifyItems:'center',
-    alignItems:'center',
-    marginBottom:'15px',
-}
-
-const TableContainer=({children})=>(
-    <div style={styles}>
+const TableContainer=({children,height})=>{
+    const styles={
+        height,
+        overflowY:'auto',
+        display:'grid',
+        justifyItems:'center',
+        alignItems:'center',
+        marginBottom:'15px',
+    }
+    return <div style={styles}>
         {children}
     </div>
-)
+}
 
 export default TableContainer

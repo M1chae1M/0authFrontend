@@ -1,10 +1,10 @@
-import React,{Component, PureComponent} from "react"
-import Router from "next/router"
-import {createFetch} from "../_app"
-import Menu from "../Menu";
-import Modal from "../Modal";
-import Spinner from "../Modal/Spinner";
-import LoginMessage from "./loginMessage";
+import React,{PureComponent} from 'react'
+import Router from 'next/router'
+import {createFetch} from '../_app'
+import Menu from '../Menu';
+import Modal from '../Modal';
+import Spinner from '../Modal/Spinner';
+import LoginMessage from './loginMessage';
 
 export const ContextOfAuthHOC=React.createContext()
 
@@ -29,15 +29,6 @@ const AuthHOC=(ToWrap)=>(
                 })
             })
         }
-        // shouldComponentUpdate(nextProps, nextState){
-            // const {logged,login_loading_state,login,password,email,age,showSelected,loginMessage,success}=this.state
-            // const isFormChanged=nextState.login!==login || nextState.password!==password || nextState.email!==email || nextState.age!==age
-            // if(nextState.logged!==logged || nextState.login_loading_state!==login_loading_state || isFormChanged || nextState.showSelected!==showSelected || nextState.loginMessage!==loginMessage || nextState.success!==success) return true
-            // return false;
-
-
-            // return Object.keys(nextState).some(key => this.state[key] !== nextState[key]);
-        // }
         componentDidMount(){
             this.isLogged(this)
         }
@@ -75,7 +66,7 @@ const AuthHOC=(ToWrap)=>(
                 localStorage.removeItem('token')
                 this.setState({logged:false},isLoggedFunction())
             }
-            const closeLoginMessage=()=>this.setState({loginMessage:""},()=>success && Router?.push?.('/'))
+            const closeLoginMessage=()=>this.setState({loginMessage:''},()=>success && Router?.push?.('/'))
             return(
                 <ContextOfAuthHOC.Provider value={{logged,logout,isLoggedFunction,changeV,login,formData,loginFunction,url,showSelected,changeAuthHOC}}>
                     <Menu/>

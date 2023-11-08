@@ -5,31 +5,42 @@ import TableContainer from '../table';
 import {testPageContext} from "../..";
 import SelectedDataBody from "./SelectedDataBody";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
+import {Component} from "react";
+
+class ChangeContainer extends Component{
+    componentDidMount(){
+        this.props.change?.();
+    }
+    render(){
+        return this.props.children
+    }
+}
 
 const SelectedData=()=>(
     <testPageContext.Consumer>
     {value=>{
         const {showModal,closeModal,logged}=value??{}
-        const styles={
-            minHeight:'20vh',
-            minWidth:'40vw',
-            // maxHeight:'20vh',
-            maxWidth:'80%',
-        }
         return(
             <ContextOfAuthHOC.Consumer>
             {value=>{
                 const {changeAuthHOC}=value??{}
-                changeAuthHOC?.({showSelected:showModal && logged});
+                const change=()=>changeAuthHOC?.({showSelected:showModal && logged});
+                const styles={
+                    minHeight:'20vh',
+                    minWidth:'40vw',
+                    maxWidth:'80%',
+                }
                 return(
-                    <Modal show={showModal && logged}>
-                        <DisplayAlert text='select result:' style={styles}>
-                            <TableContainer>
-                                <SelectedDataBody/>
-                            </TableContainer>
-                            <CloseButton onClick={closeModal}/>
-                        </DisplayAlert>
-                    </Modal>
+                    <ChangeContainer change={change}>
+                        <Modal show={showModal && logged}>
+                            <DisplayAlert text='select result:' style={styles}>
+                                <TableContainer>
+                                    <SelectedDataBody/>
+                                </TableContainer>
+                                <CloseButton onClick={closeModal}/>
+                            </DisplayAlert>
+                        </Modal>
+                    </ChangeContainer>
                 )
             }}
             </ContextOfAuthHOC.Consumer>

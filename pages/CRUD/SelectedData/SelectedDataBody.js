@@ -1,10 +1,10 @@
 import BuildTHEAD from "./BuildTHEAD";
 import TBODY from "../table/MainTable/tbody";
 import Table from 'react-bootstrap/Table';
-import {testPageContext} from "../..";
+import {CRUDPageContext} from "../..";
 
 const SelectedDataBody=()=>(
-    <testPageContext.Consumer>
+    <CRUDPageContext.Consumer>
     {value=>{
         const {selectLoading,reqData,data,fields}=value??{}
         const loadingFields=data && Object.keys(data)?.length>0 ? Object.keys(data) : fields
@@ -17,7 +17,7 @@ const SelectedDataBody=()=>(
             </Table>
         )
     }}
-    </testPageContext.Consumer>
+    </CRUDPageContext.Consumer>
 )
 
 export default SelectedDataBody

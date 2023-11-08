@@ -1,11 +1,11 @@
 import THEAD from './thead';
 import TBODY from './tbody';
 import Table from 'react-bootstrap/Table';
-import {testPageContext} from '../../..';
+import {CRUDPageContext} from '../../..';
 import {fields} from '../../../_app';
 
 const MainTable=()=>(
-    <testPageContext.Consumer>
+    <CRUDPageContext.Consumer>
     {value=>{
         const {db,db_loading}=value??{}
         const loading_finished=db?.length>0 && !db_loading
@@ -17,7 +17,7 @@ const MainTable=()=>(
             </Table>
         )
     }}
-    </testPageContext.Consumer>
+    </CRUDPageContext.Consumer>
 )
 
 export default MainTable

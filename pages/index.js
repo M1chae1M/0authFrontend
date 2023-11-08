@@ -14,7 +14,7 @@ import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 import {db_query_imitacion} from './_app';
 
-export const testPageContext=React.createContext()
+export const CRUDPageContext=React.createContext()
 
 class App extends PureComponent{
   state={
@@ -63,7 +63,7 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <testPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -77,7 +77,7 @@ class App extends PureComponent{
         </div>
         <SelectedData/>
         <NeedToLoginModal/>
-      </testPageContext.Provider>
+      </CRUDPageContext.Provider>
     )
   }
 }

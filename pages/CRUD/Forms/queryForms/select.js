@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Form} from "react-bootstrap";
-import {testPageContext} from "@/pages";
+import {CRUDPageContext} from "@/pages";
 import {fields} from "@/pages/_app";
 import Check from "../../../components/check";
 import {LeftColumn, RightColumn} from "../columns/columns";
@@ -11,7 +11,7 @@ const {Label}=Form
 export default class SelectForm extends Component{
     render(){
         return(
-            <testPageContext.Consumer>
+            <CRUDPageContext.Consumer>
             {value=>{
                 const {onChangeDataBox}=value??{}
                 const DataFields=fields?.map(x=><Check key={x} value={x} onChange={(e)=>{onChangeDataBox(e, 'data')}}/>)
@@ -27,7 +27,7 @@ export default class SelectForm extends Component{
                     </>
                 )
             }}
-            </testPageContext.Consumer>
+            </CRUDPageContext.Consumer>
         )
     }
 }

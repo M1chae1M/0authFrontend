@@ -2,7 +2,7 @@ import Modal from "../../Modal"
 import CloseButton from "../../Modal/DisplayAlert/CloseButton"
 import DisplayAlert from "../../Modal/DisplayAlert" 
 import TableContainer from '../table';
-import {testPageContext} from "../..";
+import {CRUDPageContext} from "../..";
 import SelectedDataBody from "./SelectedDataBody";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
 import {useContext} from "react";
@@ -15,7 +15,7 @@ const SelectedData=()=>{
         minWidth:'40vw',
         maxWidth:'80%',
     }
-    const {showModal,closeModal,logged}=useContext(testPageContext)??{};
+    const {showModal,closeModal,logged}=useContext(CRUDPageContext)??{};
     const {changeAuthHOC}=useContext(ContextOfAuthHOC)??{};
     useEffect(()=>changeAuthHOC?.({showSelected:showModal&&logged}),[showModal,logged,changeAuthHOC]);
     return(

@@ -1,10 +1,10 @@
 import Modal from "../Modal"
 import DisplayAlert from "../Modal/DisplayAlert"
 import CloseButton from "../Modal/DisplayAlert/CloseButton"
-import {testPageContext} from ".."
+import {CRUDPageContext} from ".."
 
 const NeedToLoginModal=()=>(
-    <testPageContext.Consumer>
+    <CRUDPageContext.Consumer>
     {value=>{
         const {showModal,closeModal,logged}=value??{}
         const style={
@@ -20,7 +20,7 @@ const NeedToLoginModal=()=>(
             </Modal>
         )
     }}
-    </testPageContext.Consumer>
+    </CRUDPageContext.Consumer>
 )
 
 export default NeedToLoginModal

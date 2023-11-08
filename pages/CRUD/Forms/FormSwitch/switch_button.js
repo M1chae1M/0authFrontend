@@ -1,6 +1,6 @@
 import {Component} from "react";
 import Button from 'react-bootstrap/Button';
-import {testPageContext} from "@/pages";
+import {CRUDPageContext} from "@/pages";
 import styled from "styled-components";
 
 const Button_hover=styled(Button)`
@@ -13,7 +13,7 @@ export default class SwitchButton extends Component{
     render(){
         const {type}=this.props
         return(
-            <testPageContext.Consumer>
+            <CRUDPageContext.Consumer>
             {value=>{
                 const {changeState,formState}=value??{}
                 const variant=type===formState?"primary":'secondary'
@@ -24,7 +24,7 @@ export default class SwitchButton extends Component{
                 })
                 return <Button_hover variant={variant} onClick={onClick}>{type}</Button_hover>
             }}
-            </testPageContext.Consumer>
+            </CRUDPageContext.Consumer>
         )
     }
 }

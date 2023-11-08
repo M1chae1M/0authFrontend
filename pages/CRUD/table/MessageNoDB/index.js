@@ -1,7 +1,7 @@
-import {testPageContext} from "../../.."
+import {CRUDPageContext} from "../../.."
 
 const MessageNoDB=()=>(
-    <testPageContext.Consumer>
+    <CRUDPageContext.Consumer>
     {value=>{
         const {logged,db,db_loading}=value??{}
         const length=db?.length ?? 0
@@ -12,7 +12,7 @@ const MessageNoDB=()=>(
             </div>
         )
     }}
-    </testPageContext.Consumer>
+    </CRUDPageContext.Consumer>
 )
 
 export default MessageNoDB

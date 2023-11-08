@@ -5,7 +5,7 @@ import UpdateForm from "./queryForms/update";
 import DeleteForm from "./queryForms/delete";
 import Button from 'react-bootstrap/Button';
 import {Form} from "react-bootstrap";
-import {testPageContext} from "@/pages";
+import {CRUDPageContext} from "@/pages";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import styled from "styled-components";
@@ -17,7 +17,7 @@ transition:all 0.2s ease-in-out;
 }`
 
 const FormHOC=()=>(
-    <testPageContext.Consumer>
+    <CRUDPageContext.Consumer>
     {value=>{
         const {submit,formState}=value??{}
         const allForms={
@@ -43,7 +43,7 @@ const FormHOC=()=>(
             </Form>
         )
     }}
-    </testPageContext.Consumer>
+    </CRUDPageContext.Consumer>
 )
 
 export default FormHOC

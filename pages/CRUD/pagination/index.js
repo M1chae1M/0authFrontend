@@ -1,5 +1,5 @@
 import {createFetch} from '../../_app'
-import {testPageContext} from '../..'
+import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate";
 
@@ -24,7 +24,7 @@ export default class TablePagination extends Component{
             marginTop:'15px',
         }
         return(
-            <testPageContext.Consumer>
+            <CRUDPageContext.Consumer>
             {value=>{
                 const {changeState,db}=value??{}
                 const handlePageClick=({selected})=>changeState({page:selected})
@@ -44,7 +44,7 @@ export default class TablePagination extends Component{
                     </div>
                 )
             }}
-            </testPageContext.Consumer>
+            </CRUDPageContext.Consumer>
         )
     }
 }

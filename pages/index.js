@@ -3,8 +3,6 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
 import {fields,selectAll} from './_app';
-import Check from './components/check';
-import Where_list_element from './CRUD/Forms/columns/where_list_element';
 import {createFetch} from './_app';
 import TableContainer from './CRUD/table';
 import SelectedData from './CRUD/SelectedData';
@@ -64,10 +62,8 @@ class App extends PureComponent{
       const {value}=e.target
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
-    const WhereListFields=fields?.map(x=><Check key={x} value={x} onChange={(e)=>onChangeDataBox(e,'where')}/>)
-    const WhereListInputs=Object.keys(where)?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,'where',x)}/>);
     return(
-      <testPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,WhereListFields,WhereListInputs,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
+      <testPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>

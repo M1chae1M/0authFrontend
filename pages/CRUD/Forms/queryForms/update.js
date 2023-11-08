@@ -5,7 +5,7 @@ import {fields} from "@/pages/_app";
 import Check from "../../../components/check";
 import Where_list_element from "../columns/where_list_element";
 import {LeftColumn, RightColumn} from "../columns/columns";
-import WHERE from "../WHERE";
+import WHERE from "../where";
 
 const {Label}=Form
 

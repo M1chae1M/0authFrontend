@@ -4,7 +4,7 @@ import {testPageContext} from "@/pages";
 import {fields} from "@/pages/_app";
 import Check from "../../../components/check";
 import {LeftColumn, RightColumn} from "../columns/columns";
-import WHERE from "../WHERE";
+import WHERE from "../where";
 
 const {Label}=Form
 

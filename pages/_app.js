@@ -49,8 +49,6 @@ export function selectAll(component,page,limit){
 
 export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)
 
-export const height='44px'
-
 export const db_query_imitacion={
   insert:(db,data,where)=>{
     const db_copy=[...db];
@@ -71,3 +69,5 @@ export const db_query_imitacion={
     return _.filter([...db], item=>!_.isMatch(item, where));
   },
 }
+
+export const height='44px'

@@ -1,5 +1,7 @@
-// const NEW_TEST_TYPE='new_test_type'
+const CHANGE_SELECTLOADING='change_selectLoading'
+const CHANGE_FORMSTATE='change_formState'
 
 export default {
-    
+    CHANGE_SELECTLOADING,
+    CHANGE_FORMSTATE
 }

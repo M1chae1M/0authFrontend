@@ -23,7 +23,6 @@ class App extends PureComponent{
     data:{},
     where:{},
     db:[],
-    formState:'select',
     db_loading:true,
     reqData:[],
     showModal:false,
@@ -39,8 +38,8 @@ class App extends PureComponent{
     selectAll(this,page,limit)
   }
   render(){
-    const {db,formState,data,where,db_loading,reqData,showModal,page,limit}=this.state
-    const {logged,isLoggedFunction}=this.props
+    const {db,data,where,db_loading,reqData,showModal,page,limit}=this.state
+    const {logged,isLoggedFunction,formState}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>changeState({showModal:false})
     const submit=async(e)=>{
@@ -68,7 +67,7 @@ class App extends PureComponent{
     return(
       <CRUDPageContext.Provider value={{
         submit,changeValues,onChangeDataBox,
-        changeState,data,where,formState,
+        changeState,data,where,
         db_loading,db,
         reqData,logged,showModal,
         closeModal,fields
@@ -93,9 +92,11 @@ class App extends PureComponent{
 
 const mapStateToProps=(state)=>({
   selectLoading:state.selectLoading,
+  formState:state.formState,
 })
 const mapDispatchToProps=(dispatch)=>({
-  change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue))
+  change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue)),
+  change_formState:(newValue)=>dispatch(action.change_formState(newValue)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(App))

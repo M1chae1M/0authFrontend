@@ -9,6 +9,8 @@ import {CRUDPageContext} from "@/pages";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import styled from "styled-components";
+import {connect} from "react-redux";
+import action from "@/pages/STORE/action";
 
 const SubmitButton=styled(Button)`
 transition:all 0.2s ease-in-out;
@@ -16,10 +18,10 @@ transition:all 0.2s ease-in-out;
     transform:scale(1.01);
 }`
 
-const FormHOC=()=>(
+const FormHOC=({formState})=>(
     <CRUDPageContext.Consumer>
     {value=>{
-        const {submit,formState}=value??{}
+        const {submit}=value??{}
         const allForms={
             select:SelectForm,
             insert:InsertForm,
@@ -46,4 +48,11 @@ const FormHOC=()=>(
     </CRUDPageContext.Consumer>
 )
 
-export default FormHOC
+const mapStateToProps=(state)=>({
+    formState:state.formState,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_formState:(newValue)=>dispatch(action.change_formState(newValue)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(FormHOC)

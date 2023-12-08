@@ -1,20 +1,17 @@
 import types from './types'
 
 const initState={
-    // test_value:'0000000000000000000',
-    // page:0,
-    // limit:6,
-
     selectLoading:false,
+    formState:'select',
 }
 
 const reducer=(state=initState, action)=>{
     switch(action.type){
-        // case types.NEW_TEST_TYPE:{
-        //     return {...state, test_value:action.new_test_value}
-        // }
-        case 'change_selectLoading':{
+        case types.CHANGE_SELECTLOADING:{
             return {...state, selectLoading:action.selectLoading}
+        }
+        case types.CHANGE_FORMSTATE:{
+            return {...state, formState:action.formState}
         }
         default:
             return state

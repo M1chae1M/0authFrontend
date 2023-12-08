@@ -1,7 +1,9 @@
 import types from './types'
 
-// const newValue=(newTestValue)=>({type:types.NEW_TEST_TYPE,new_test_value:newTestValue})
-const change_selectLoading=(newValue)=>({type:'change_selectLoading',selectLoading:newValue})
+const change_selectLoading=(newValue)=>({type:types.CHANGE_SELECTLOADING,selectLoading:newValue})
+const change_formState=(newValue)=>({type:types.CHANGE_FORMSTATE,formState:newValue})
+
 export default {
-    change_selectLoading
+    change_selectLoading,
+    change_formState,
 }

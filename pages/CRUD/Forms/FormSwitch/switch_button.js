@@ -2,6 +2,8 @@ import {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import {CRUDPageContext} from "@/pages";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import action from "@/pages/STORE/action";
 
 const Button_hover=styled(Button)`
 &:hover{
@@ -9,22 +11,33 @@ const Button_hover=styled(Button)`
     transform:scale(1.05) !important;
 }`
 
-export default class SwitchButton extends Component{
+class SwitchButton extends Component{
     render(){
-        const {type}=this.props
+        const {type,formState,change_formState}=this.props
         return(
             <CRUDPageContext.Consumer>
             {value=>{
-                const {changeState,formState}=value??{}
+                const {changeState}=value??{}
                 const variant=type===formState?"primary":'secondary'
-                const onClick=()=>changeState({
-                    formState:type,
+                const onClick=()=>{
+                    changeState({
                     data:{},
                     where:{},
                 })
+                change_formState(type)
+            }
                 return <Button_hover variant={variant} onClick={onClick}>{type}</Button_hover>
             }}
             </CRUDPageContext.Consumer>
         )
     }
 }
+
+const mapStateToProps=(state)=>({
+    formState:state.formState,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_formState:(newValue)=>dispatch(action.change_formState(newValue)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(SwitchButton)

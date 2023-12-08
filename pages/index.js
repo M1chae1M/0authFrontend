@@ -36,7 +36,7 @@ class App extends PureComponent{
     selectAll(this,page,limit)
   }
   componentDidUpdate(){
-    this.props.newTestValue('nowy test stan');
+    // this.props.newTestValue('nowy test stan');
     const {page,limit}=this.state
     selectAll(this,page,limit)
   }
@@ -67,7 +67,7 @@ class App extends PureComponent{
     }
     return(
       <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
-        {this.props.test_value}
+        {/* {this.props.test_value} */}
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -87,10 +87,10 @@ class App extends PureComponent{
 }
 
 const mapStateToProps=(state)=>({
-  test_value:state.test_value,
+  // test_value:state.test_value,
 })
 const mapDispatchToProps=(dispatch)=>({
-  newTestValue:(newVal)=>dispatch(action.newValue(newVal))
+  // newTestValue:(newVal)=>dispatch(action.newValue(newVal))
 })
 
 // export default AuthHOC(App)

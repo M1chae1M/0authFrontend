@@ -26,7 +26,6 @@ class App extends PureComponent{
     formState:'select',
     db_loading:true,
     reqData:[],
-    selectLoading:false,
     showModal:false,
     page:0,
     limit:6,
@@ -36,23 +35,24 @@ class App extends PureComponent{
     selectAll(this,page,limit)
   }
   componentDidUpdate(){
-    // this.props.newTestValue('nowy test stan');
     const {page,limit}=this.state
     selectAll(this,page,limit)
   }
   render(){
-    const {db,formState,data,where,db_loading,reqData,selectLoading,showModal,page,limit}=this.state
+    const {db,formState,data,where,db_loading,reqData,showModal,page,limit}=this.state
     const {logged,isLoggedFunction}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>changeState({showModal:false})
     const submit=async(e)=>{
       e.preventDefault()
       await isLoggedFunction()
-      changeState({selectLoading:true, showModal:formState==='select'||!logged?true:false})
+      changeState({showModal:formState==='select'||!logged?true:false});
+      this.props.change_selectLoading(true);
       await createFetch(formState,{data, where},(data)=>{
         const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
         const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
-        changeState({reqData:newReqData, db:newDB, selectLoading:false})
+        changeState({reqData:newReqData, db:newDB});
+        this.props.change_selectLoading(false);
       })
     }
     const onChangeDataBox=(e, state)=>{
@@ -66,8 +66,13 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
-        {/* {this.props.test_value} */}
+      <CRUDPageContext.Provider value={{
+        submit,changeValues,onChangeDataBox,
+        changeState,data,where,formState,
+        db_loading,db,
+        reqData,logged,showModal,
+        closeModal,fields
+        ,page}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -87,11 +92,10 @@ class App extends PureComponent{
 }
 
 const mapStateToProps=(state)=>({
-  // test_value:state.test_value,
+  selectLoading:state.selectLoading,
 })
 const mapDispatchToProps=(dispatch)=>({
-  // newTestValue:(newVal)=>dispatch(action.newValue(newVal))
+  change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue))
 })
 
-// export default AuthHOC(App)
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(App))

@@ -2,11 +2,13 @@ import BuildTHEAD from "./BuildTHEAD";
 import TBODY from "../table/MainTable/tbody";
 import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from "../..";
+import {connect} from "react-redux";
+import action from "@/pages/STORE/action";
 
-const SelectedDataBody=()=>(
+const SelectedDataBody=({selectLoading})=>(
     <CRUDPageContext.Consumer>
     {value=>{
-        const {selectLoading,reqData,data,fields}=value??{}
+        const {reqData,data,fields}=value??{}
         const loadingFields=data && Object.keys(data)?.length>0 ? Object.keys(data) : fields
         return(
             reqData?.length===0 && !selectLoading ?
@@ -20,4 +22,11 @@ const SelectedDataBody=()=>(
     </CRUDPageContext.Consumer>
 )
 
-export default SelectedDataBody
+const mapStateToProps=(state)=>({
+    selectLoading:state.selectLoading,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(SelectedDataBody)

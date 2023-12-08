@@ -13,6 +13,8 @@ import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 import {db_query_imitacion} from './_app';
+import {connect} from 'react-redux';
+import action from './STORE/action';
 
 export const CRUDPageContext=React.createContext()
 
@@ -34,6 +36,7 @@ class App extends PureComponent{
     selectAll(this,page,limit)
   }
   componentDidUpdate(){
+    this.props.newTestValue('nowy test stan');
     const {page,limit}=this.state
     selectAll(this,page,limit)
   }
@@ -64,6 +67,7 @@ class App extends PureComponent{
     }
     return(
       <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,formState,db_loading,db,selectLoading,reqData,logged,showModal,closeModal,fields,page}}>
+        {this.props.test_value}
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -82,4 +86,12 @@ class App extends PureComponent{
   }
 }
 
-export default AuthHOC(App)
+const mapStateToProps=(state)=>({
+  test_value:state.test_value,
+})
+const mapDispatchToProps=(dispatch)=>({
+  newTestValue:(newVal)=>dispatch(action.newValue(newVal))
+})
+
+// export default AuthHOC(App)
+export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(App))

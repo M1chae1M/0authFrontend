@@ -1,9 +1,7 @@
 import types from './types'
 
-const change_selectLoading=(newValue)=>({type:types.CHANGE_SELECTLOADING,selectLoading:newValue})
-const change_formState=(newValue)=>({type:types.CHANGE_FORMSTATE,formState:newValue})
+const change_state=(newState)=>({type:types.CHANGE_STATE, ...newState})
 
 export default {
-    change_selectLoading,
-    change_formState,
+    change_state,
 }

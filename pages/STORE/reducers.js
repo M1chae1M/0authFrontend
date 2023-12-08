@@ -7,11 +7,8 @@ const initState={
 
 const reducer=(state=initState, action)=>{
     switch(action.type){
-        case types.CHANGE_SELECTLOADING:{
-            return {...state, selectLoading:action.selectLoading}
-        }
-        case types.CHANGE_FORMSTATE:{
-            return {...state, formState:action.formState}
+        case types.CHANGE_STATE:{
+            return {...state, ...action}
         }
         default:
             return state

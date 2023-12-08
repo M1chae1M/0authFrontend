@@ -1,7 +1,5 @@
-const CHANGE_SELECTLOADING='change_selectLoading'
-const CHANGE_FORMSTATE='change_formState'
+const CHANGE_STATE='changeState'
 
 export default {
-    CHANGE_SELECTLOADING,
-    CHANGE_FORMSTATE
+    CHANGE_STATE,
 }

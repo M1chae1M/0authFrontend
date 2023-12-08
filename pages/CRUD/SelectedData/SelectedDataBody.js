@@ -3,7 +3,6 @@ import TBODY from "../table/MainTable/tbody";
 import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from "../..";
 import {connect} from "react-redux";
-import action from "@/pages/STORE/action";
 
 const SelectedDataBody=({selectLoading})=>(
     <CRUDPageContext.Consumer>
@@ -26,7 +25,6 @@ const mapStateToProps=(state)=>({
     selectLoading:state.selectLoading,
 })
 const mapDispatchToProps=(dispatch)=>({
-    change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(SelectedDataBody)

@@ -46,12 +46,12 @@ class App extends PureComponent{
       e.preventDefault()
       await isLoggedFunction()
       changeState({showModal:formState==='select'||!logged?true:false});
-      this.props.change_selectLoading(true);
+      this.props.change_state({selectLoading:true})
       await createFetch(formState,{data, where},(data)=>{
         const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
         const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
         changeState({reqData:newReqData, db:newDB});
-        this.props.change_selectLoading(false);
+        this.props.change_state({selectLoading:false})
       })
     }
     const onChangeDataBox=(e, state)=>{
@@ -95,8 +95,7 @@ const mapStateToProps=(state)=>({
   formState:state.formState,
 })
 const mapDispatchToProps=(dispatch)=>({
-  change_selectLoading:(newValue)=>dispatch(action.change_selectLoading(newValue)),
-  change_formState:(newValue)=>dispatch(action.change_formState(newValue)),
+  change_state:(newState)=>dispatch(action.change_state(newState)),
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(App))

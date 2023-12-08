@@ -1,6 +1,6 @@
 import CONFIG from '../config/config.json'
 import '../styles/scrollbar.css';
-import appStore from './STORE/store';
+import appStore from '../STORE/store';
 import {Provider} from 'react-redux';
 
 // export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'

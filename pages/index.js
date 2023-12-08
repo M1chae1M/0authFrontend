@@ -14,7 +14,7 @@ import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 import {db_query_imitacion} from './_app';
 import {connect} from 'react-redux';
-import action from './STORE/action';
+import action from '../STORE/action';
 
 export const CRUDPageContext=React.createContext()
 

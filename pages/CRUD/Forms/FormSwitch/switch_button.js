@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import {CRUDPageContext} from "@/pages";
 import styled from "styled-components";
 import {connect}from "react-redux";
-import action from "@/pages/STORE/action";
+import action from "@/STORE/action";
 
 const Button_hover=styled(Button)`
 &:hover{

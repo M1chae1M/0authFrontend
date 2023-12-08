@@ -65,13 +65,7 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{
-        submit,changeValues,onChangeDataBox,
-        changeState,data,where,
-        db_loading,db,
-        reqData,logged,showModal,
-        closeModal,fields
-        ,page}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,showModal,closeModal,fields,page}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>

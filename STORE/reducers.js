@@ -6,6 +6,7 @@ const initState={
     showModal:false,
     limit:6,
     page:0,
+    reqData:[],
 }
 
 const reducer=(state=initState, action)=>{

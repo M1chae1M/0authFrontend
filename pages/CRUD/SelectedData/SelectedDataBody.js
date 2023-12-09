@@ -4,10 +4,10 @@ import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from "../..";
 import {connect} from "react-redux";
 
-const SelectedDataBody=({selectLoading})=>(
+const SelectedDataBody=({selectLoading,reqData})=>(
     <CRUDPageContext.Consumer>
     {value=>{
-        const {reqData,data,fields}=value??{}
+        const {data,fields}=value??{}
         const loadingFields=data && Object.keys(data)?.length>0 ? Object.keys(data) : fields
         return(
             reqData?.length===0 && !selectLoading ?
@@ -23,6 +23,7 @@ const SelectedDataBody=({selectLoading})=>(
 
 const mapStateToProps=(state)=>({
     selectLoading:state.selectLoading,
+    reqData:state.reqData,
 })
 const mapDispatchToProps=(dispatch)=>({
 })

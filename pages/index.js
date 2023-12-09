@@ -24,12 +24,11 @@ class App extends PureComponent{
     where:{},
     db:[],
     db_loading:true,
-    reqData:[],
   }
   componentDidMount=loader.bind(this)
   componentDidUpdate=loader.bind(this)
   render(){
-    const {db,data,where,db_loading,reqData}=this.state
+    const {db,data,where,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>change_state({showModal:false})
@@ -40,8 +39,8 @@ class App extends PureComponent{
       await createFetch(formState,{data, where},(data)=>{
         const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
         const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
-        changeState({reqData:newReqData, db:newDB});
-        change_state({selectLoading:false})
+        changeState({db:newDB});
+        change_state({selectLoading:false,reqData:newReqData})
       })
     }
     const onChangeDataBox=(e, state)=>{
@@ -55,7 +54,7 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,closeModal,fields}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,logged,closeModal,fields}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -85,6 +84,7 @@ const mapStateToProps=(state)=>({
   showModal:state.showModal,
   limit:state.limit,
   page:state.page,
+  reqData:state.reqData,
 })
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

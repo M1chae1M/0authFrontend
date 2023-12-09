@@ -2,8 +2,10 @@ import {createFetch} from '../../_app'
 import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate";
+import { connect } from 'react-redux';
+import action from '@/STORE/action';
 
-export default class TablePagination extends Component{
+class TablePagination extends Component{
     state={
         count:1,
     }
@@ -48,3 +50,12 @@ export default class TablePagination extends Component{
         )
     }
 }
+
+const mapStateToProps=(state)=>({
+    limit:state.limit,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_state:(newState)=>dispatch(action.change_state(newState)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(TablePagination)

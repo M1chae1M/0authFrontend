@@ -26,19 +26,20 @@ class App extends PureComponent{
     db_loading:true,
     reqData:[],
     page:0,
-    limit:6,
   }
   componentDidMount(){
-    const {page,limit}=this.state;
+    const {page}=this.state;
+    const {limit}=this.props
     selectAll(this,page,limit)
   }
   componentDidUpdate(){
-    const {page,limit}=this.state
+    const {page}=this.state
+    const {limit}=this.props
     selectAll(this,page,limit)
   }
   render(){
-    const {db,data,where,db_loading,reqData,page,limit}=this.state
-    const {logged,isLoggedFunction,formState,change_state}=this.props
+    const {db,data,where,db_loading,reqData,page}=this.state
+    const {logged,isLoggedFunction,formState,change_state,limit}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
@@ -70,7 +71,7 @@ class App extends PureComponent{
             <MainTable/>
             <MessageNoDB/>
           </TableContainer>
-          <TablePagination limit={limit}/>
+          <TablePagination/>
           <ButtonGroup style={{marginBottom:'15px'}}>
             <FormSwitches/>
           </ButtonGroup>
@@ -87,6 +88,7 @@ const mapStateToProps=(state)=>({
   selectLoading:state.selectLoading,
   formState:state.formState,
   showModal:state.showModal,
+  limit:state.limit,
 })
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

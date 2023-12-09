@@ -3,6 +3,7 @@ import types from './types'
 const initState={
     selectLoading:false,
     formState:'select',
+    showModal:false,
 }
 
 const reducer=(state=initState, action)=>{

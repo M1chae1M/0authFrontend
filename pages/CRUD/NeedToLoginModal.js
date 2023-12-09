@@ -2,11 +2,13 @@ import Modal from "../Modal"
 import DisplayAlert from "../Modal/DisplayAlert"
 import CloseButton from "../Modal/DisplayAlert/CloseButton"
 import {CRUDPageContext} from ".."
+import {connect} from "react-redux"
+import action from "@/STORE/action"
 
-const NeedToLoginModal=()=>(
+const NeedToLoginModal=({showModal})=>(
     <CRUDPageContext.Consumer>
     {value=>{
-        const {showModal,closeModal,logged}=value??{}
+        const {closeModal,logged}=value??{}
         const style={
             display:'grid',
             justifyItems:'center',
@@ -23,4 +25,11 @@ const NeedToLoginModal=()=>(
     </CRUDPageContext.Consumer>
 )
 
-export default NeedToLoginModal
+const mapStateToProps=(state)=>({
+    showModal:state.showModal,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_state:(newState)=>dispatch(action.change_state(newState)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(NeedToLoginModal)

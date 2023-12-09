@@ -7,15 +7,17 @@ import SelectedDataBody from "./SelectedDataBody";
 import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
 import {useContext} from "react";
 import {useEffect} from "react";
+import {connect} from "react-redux";
+import action from "@/STORE/action";
 
-const SelectedData=()=>{
+const SelectedData=({showModal})=>{
     const styles={
         minHeight:'20vh',
         minHeight:'40vh',
         minWidth:'40vw',
         maxWidth:'80%',
     }
-    const {showModal,closeModal,logged}=useContext(CRUDPageContext)??{};
+    const {closeModal,logged}=useContext(CRUDPageContext)??{};
     const {changeAuthHOC}=useContext(ContextOfAuthHOC)??{};
     useEffect(()=>changeAuthHOC?.({showSelected:showModal&&logged}),[showModal,logged,changeAuthHOC]);
     return(
@@ -30,4 +32,11 @@ const SelectedData=()=>{
     )
 }
   
-export default SelectedData
+const mapStateToProps=(state)=>({
+    showModal:state.showModal,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_state:(newState)=>dispatch(action.change_state(newState)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(SelectedData)

@@ -32,7 +32,7 @@ export async function createFetch(path, body, callback=null){
       callback(data)
     }
   })
-  .catch(error =>console.error('Błąd logowania:', error));
+  .catch(error=>console.error('Błąd logowania:', error));
 }
 
 export function selectAll(component,page,limit){

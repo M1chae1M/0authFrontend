@@ -25,7 +25,6 @@ class App extends PureComponent{
     db:[],
     db_loading:true,
     reqData:[],
-    showModal:false,
     page:0,
     limit:6,
   }
@@ -38,20 +37,19 @@ class App extends PureComponent{
     selectAll(this,page,limit)
   }
   render(){
-    const {db,data,where,db_loading,reqData,showModal,page,limit}=this.state
-    const {logged,isLoggedFunction,formState}=this.props
+    const {db,data,where,db_loading,reqData,page,limit}=this.state
+    const {logged,isLoggedFunction,formState,change_state}=this.props
     const changeState=(newState)=>this.setState(newState)
-    const closeModal=()=>changeState({showModal:false})
+    const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
       e.preventDefault()
       await isLoggedFunction()
-      changeState({showModal:formState==='select'||!logged?true:false});
-      this.props.change_state({selectLoading:true})
+      change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
       await createFetch(formState,{data, where},(data)=>{
         const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
         const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
         changeState({reqData:newReqData, db:newDB});
-        this.props.change_state({selectLoading:false})
+        change_state({selectLoading:false})
       })
     }
     const onChangeDataBox=(e, state)=>{
@@ -65,7 +63,8 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,showModal,closeModal,fields,page}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,
+      closeModal,fields,page}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -87,6 +86,7 @@ class App extends PureComponent{
 const mapStateToProps=(state)=>({
   selectLoading:state.selectLoading,
   formState:state.formState,
+  showModal:state.showModal,
 })
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

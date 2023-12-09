@@ -3,11 +3,12 @@ import TBODY from "../table/MainTable/tbody";
 import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from "../..";
 import {connect} from "react-redux";
+import {fields} from "@/pages/_app";
 
 const SelectedDataBody=({selectLoading,reqData})=>(
     <CRUDPageContext.Consumer>
     {value=>{
-        const {data,fields}=value??{}
+        const {data}=value??{}
         const loadingFields=data && Object.keys(data)?.length>0 ? Object.keys(data) : fields
         return(
             reqData?.length===0 && !selectLoading ?

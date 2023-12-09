@@ -5,6 +5,7 @@ const initState={
     formState:'select',
     showModal:false,
     limit:6,
+    page:0,
 }
 
 const reducer=(state=initState, action)=>{

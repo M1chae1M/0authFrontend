@@ -2,7 +2,7 @@ import {createFetch} from '../../_app'
 import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate";
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import action from '@/STORE/action';
 
 class TablePagination extends Component{
@@ -28,8 +28,9 @@ class TablePagination extends Component{
         return(
             <CRUDPageContext.Consumer>
             {value=>{
-                const {changeState,db}=value??{}
-                const handlePageClick=({selected})=>changeState({page:selected})
+                const {db}=value??{}
+                const {change_state}=this.props
+                const handlePageClick=({selected})=>change_state({page:selected})
                 return(
                     db?.length>0 &&
                     <div style={styles}>

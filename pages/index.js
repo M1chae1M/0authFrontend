@@ -25,21 +25,12 @@ class App extends PureComponent{
     db:[],
     db_loading:true,
     reqData:[],
-    page:0,
   }
-  componentDidMount(){
-    const {page}=this.state;
-    const {limit}=this.props
-    selectAll(this,page,limit)
-  }
-  componentDidUpdate(){
-    const {page}=this.state
-    const {limit}=this.props
-    selectAll(this,page,limit)
-  }
+  componentDidMount=loader.bind(this)
+  componentDidUpdate=loader.bind(this)
   render(){
-    const {db,data,where,db_loading,reqData,page}=this.state
-    const {logged,isLoggedFunction,formState,change_state,limit}=this.props
+    const {db,data,where,db_loading,reqData}=this.state
+    const {logged,isLoggedFunction,formState,change_state}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
@@ -64,8 +55,7 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,
-      closeModal,fields,page}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,reqData,logged,closeModal,fields}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -84,11 +74,17 @@ class App extends PureComponent{
   }
 }
 
+function loader(){
+  const {limit,page}=this.props
+  selectAll(this,page,limit)
+}
+
 const mapStateToProps=(state)=>({
   selectLoading:state.selectLoading,
   formState:state.formState,
   showModal:state.showModal,
   limit:state.limit,
+  page:state.page,
 })
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

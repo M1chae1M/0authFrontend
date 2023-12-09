@@ -21,15 +21,14 @@ export const CRUDPageContext=React.createContext()
 class App extends PureComponent{
   state={
     data:{},
-    where:{},
     db:[],
     db_loading:true,
   }
   componentDidMount=loader.bind(this)
   componentDidUpdate=loader.bind(this)
   render(){
-    const {db,data,where,db_loading}=this.state
-    const {logged,isLoggedFunction,formState,change_state}=this.props
+    const {db,data,db_loading}=this.state
+    const {logged,isLoggedFunction,formState,change_state,where}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
@@ -54,7 +53,7 @@ class App extends PureComponent{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,where,db_loading,db,logged,closeModal,fields}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal,fields}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>
@@ -85,6 +84,7 @@ const mapStateToProps=(state)=>({
   limit:state.limit,
   page:state.page,
   reqData:state.reqData,
+  where:state.where,
 })
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

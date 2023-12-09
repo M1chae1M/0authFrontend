@@ -1,17 +1,23 @@
+import {connect} from "react-redux"
 import Where_list_element from "../columns/where_list_element"
-import {CRUDPageContext} from "@/pages"
+import action from "@/STORE/action"
 
-const WhereListInputs=()=>(
-    <CRUDPageContext.Consumer>
-    {value=>{
-        const {changeValues,where}=value??{}
-        return(
-            Object.keys(where??{})?.map(x=>(
-                <Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,'where',x)}/>)
-            )
-        )
-    }}
-    </CRUDPageContext.Consumer>
+const WhereListInputs=({where,change_state})=>(
+    Object.keys(where??{})?.map(x=>(
+        <Where_list_element key={x} name={x} onChange={(e)=>{
+            const {value}=e.target??{}
+            change_state({
+                where:{...where, [x]:value===''?'':value}
+            })
+        }}/>)
+    )
 )
 
-export default WhereListInputs
+const mapStateToProps=(state)=>({
+    where:state.where,
+})
+const mapDispatchToProps=(dispatch)=>({
+    change_state:(newState)=>dispatch(action.change_state(newState)),
+})
+  
+export default connect(mapStateToProps,mapDispatchToProps)(WhereListInputs)

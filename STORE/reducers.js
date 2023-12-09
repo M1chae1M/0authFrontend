@@ -7,6 +7,7 @@ const initState={
     limit:6,
     page:0,
     reqData:[],
+    where:{},
 }
 
 const reducer=(state=initState, action)=>{

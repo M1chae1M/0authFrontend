@@ -22,9 +22,8 @@ class SwitchButton extends Component{
                 const onClick=()=>{
                     changeState({
                         data:{},
-                        where:{},
                     });
-                    change_state({formState:type})
+                    change_state({formState:type,where:{}})
                 }
                 return <Button_hover variant={variant} onClick={onClick}>{type}</Button_hover>
             }}

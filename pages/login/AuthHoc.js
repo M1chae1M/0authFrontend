@@ -21,25 +21,21 @@ const AuthHOC=(ToWrap)=>(
             loginMessage:'',
             success:false,
         }
-        isLogged(comp){
+        isLogged(){
              createFetch('logged',{},(data)=>{
                 const path=Router.asPath.split('?')[0]?.split('/')[1];
-                comp.setState({logged:data.logged},()=>{
+                this.setState({logged:data.logged},()=>{
                     data.logged && (path==='login' || path==='signin') && Router?.push?.('/');
                 })
             })
         }
-        componentDidMount(){
-            this.isLogged(this)
-        }
-        componentDidUpdate(){
-            this.isLogged(this)
-        }
+        componentDidMount=()=>this.isLogged()
+        componentDidUpdate=()=>this.isLogged()
         render(){
             const {url}=this.props
             const {login_loading_state,login,password,email,age,logged,showSelected,loginMessage,success}=this.state
             const formData={login,password,email,age}
-            const isLoggedFunction=()=>this.isLogged(this)
+            const isLoggedFunction=()=>this.isLogged()
             const changeAuthHOC=(newState)=>this.setState(newState)
             const changeV=({target})=>{
                 const {name,value}=target

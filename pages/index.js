@@ -24,8 +24,8 @@ class App extends PureComponent{
     db:[],
     db_loading:true,
   }
-  componentDidMount=loader.bind(this)
-  componentDidUpdate=loader.bind(this)
+  componentDidMount=selectAll.bind(this)
+  componentDidUpdate=selectAll.bind(this)
   render(){
     const {db,data,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where}=this.props
@@ -70,11 +70,6 @@ class App extends PureComponent{
       </CRUDPageContext.Provider>
     )
   }
-}
-
-function loader(){
-  const {limit,page}=this.props
-  selectAll(this,page,limit)
 }
 
 const mapStateToProps=(state)=>({

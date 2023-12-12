@@ -35,7 +35,9 @@ export async function createFetch(path, body, callback=null){
   .catch(error=>console.error('Błąd logowania:', error));
 }
 
-export function selectAll(component,page,limit){
+export function selectAll(){
+  const {page,limit}=this.props
+
   fetch(`${url}/all/${page}/${limit}`,{
     method:'POST',
     credentials:'include',
@@ -43,11 +45,8 @@ export function selectAll(component,page,limit){
     body:JSON.stringify({token:getToken()})
   })
   .then(res=>res.json())
-  .then((data)=>component.setState({db:data, db_loading:false}))
-  .catch(error=>{
-    console.error('Błąd logowania:', error)
-    component.setState({db:[],db_loading:false})
-  })
+  .then((data)=>this.setState({db:data, db_loading:false}))
+  .catch(error=>this.setState({db:[],db_loading:false},()=>console.error('Błąd logowania:', error)))
 }
 
 export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)

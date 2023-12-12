@@ -36,10 +36,9 @@ class App extends PureComponent{
       await isLoggedFunction()
       change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
       await createFetch(formState,{data, where},(data)=>{
-        const newReqData=db_query_imitacion?.[formState]?.(db,data,where) || data
-        const newDB=db_query_imitacion?.[formState]?.(db,data,where) || db
-        changeState({db:newDB});
-        change_state({selectLoading:false,reqData:newReqData})
+        const reqData=db_query_imitacion?.[formState]?.(db,data,where) || data
+        changeState({db:reqData});
+        change_state({selectLoading:false,reqData})
       })
     }
     const onChangeDataBox=(e, state)=>{

@@ -1,9 +1,9 @@
 import {createFetch} from '../../_app'
 import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
-import ReactPaginate from "react-paginate";
-import {connect} from 'react-redux';
-import action from '@/STORE/action';
+import ReactPaginate from "react-paginate"
+import {connect} from 'react-redux'
+import action from '@/STORE/action'
 
 class TablePagination extends Component{
     state={
@@ -30,17 +30,17 @@ class TablePagination extends Component{
             {value=>{
                 const {db}=value??{}
                 const {change_state}=this.props
-                const handlePageClick=({selected})=>change_state({page:selected})
+                const onPageChange=({selected})=>change_state({page:selected})
                 return(
                     db?.length>0 &&
                     <div style={styles}>
                         <ReactPaginate
-                            previousLabel={"<"}
-                            nextLabel={">"}
+                            previousLabel="<"
+                            nextLabel=">"
                             pageCount={count}
-                            onPageChange={handlePageClick}
-                            containerClassName={"allCards"}
-                            activeClassName={"actualCard"}
+                            onPageChange={onPageChange}
+                            containerClassName="allCards"
+                            activeClassName="actualCard"
                             marginPagesDisplayed={2}
                             pageRangeDisplayed={2}
                         />

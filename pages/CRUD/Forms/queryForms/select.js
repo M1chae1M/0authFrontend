@@ -1,7 +1,8 @@
 import {Component} from "react";
 import {Form} from "react-bootstrap";
 import {CRUDPageContext} from "@/pages";
-import {fields} from "@/pages/_app";
+// import {fields} from "@/pages/_app";
+import fields from '@/config/fields.json'
 import Check from "../../../components/check";
 import {LeftColumn, RightColumn} from "../columns/columns";
 import WHERE from "../where";

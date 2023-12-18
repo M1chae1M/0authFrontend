@@ -1,5 +1,6 @@
 import Check from "@/pages/components/check"
-import {fields} from "@/pages/_app"
+// import {fields} from "@/pages/_app"
+import fields from '@/config/fields.json'
 import {connect} from "react-redux"
 import action from "@/STORE/action"
 
@@ -9,6 +10,9 @@ const WhereListFields=({where,change_state})=>(
             const {value, checked}=e.target
             const _copy=where;
             !checked && delete _copy?.[value];
+
+            // console.log('test kliknięcia')
+
             change_state({ where:checked?{..._copy, [value]:''}:_copy });
         }}/>
     ))

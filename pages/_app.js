@@ -5,8 +5,8 @@ import {Provider} from 'react-redux';
 import {getToken} from '@/functions/getToken';
 // import _ from 'lodash';
 
-// export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
-export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
+export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
+// export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
 
 const App=({Component, pageProps})=>(
   <Provider store={appStore}>
@@ -69,7 +69,7 @@ export function selectAll(){
 //   },
 // }
 
-export const height='44px'
+// export const height='44px'
 
 export default App
 

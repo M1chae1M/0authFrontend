@@ -3,6 +3,7 @@ import '../styles/scrollbar.css';
 import appStore from '../STORE/store';
 import {Provider} from 'react-redux';
 import {getToken} from '@/functions/getToken';
+// import _ from 'lodash';
 
 // export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
 export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
@@ -47,26 +48,26 @@ export function selectAll(){
   .catch(error=>this.setState({db:[],db_loading:false},()=>console.error('Błąd logowania:', error)))
 }
 
-export const db_query_imitacion={
-  insert:(db,data,where)=>{
-    const db_copy=[...db];
-    const newRecord=Object.fromEntries(Object.keys(db?.[0] ?? {}).map(x=>[x, '']));
-    db_copy.push({ ...newRecord, ...data, id:null });
-    return db_copy
-  },
-  update:(db,data,where)=>{
-    const db_copy=_.map([...db], item=>{
-      if(_.isMatch(item, where)){
-        return { ...item, ...data };
-      }
-      return item;
-    });
-    return db_copy
-  },
-  delete:(db,data,where)=>{
-    return _.filter([...db], item=>!_.isMatch(item, where));
-  },
-}
+// export const db_query_imitacion={
+//   insert:(db,data,where)=>{
+//     const db_copy=[...db];
+//     const newRecord=Object.fromEntries(Object.keys(db?.[0] ?? {}).map(x=>[x, '']));
+//     db_copy.push({ ...newRecord, ...data, id:null });
+//     return db_copy
+//   },
+//   update:(db,data,where)=>{
+//     const db_copy=_.map([...db], item=>{
+//       if(_.isMatch(item, where)){
+//         return { ...item, ...data };
+//       }
+//       return item;
+//     });
+//     return db_copy
+//   },
+//   delete:(db,data,where)=>{
+//     return _.filter([...db], item=>!_.isMatch(item, where));
+//   },
+// }
 
 export const height='44px'
 

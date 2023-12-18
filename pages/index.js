@@ -12,7 +12,8 @@ import MessageNoDB from './CRUD/table/MessageNoDB';
 import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
-import {db_query_imitacion} from './_app';
+// import {db_query_imitacion} from './_app';
+import { db_query_imitacion } from '@/functions/db_query_imitacion';
 import {connect} from 'react-redux';
 import action from '../STORE/action';
 

@@ -3,8 +3,8 @@ import '../styles/scrollbar.css';
 import appStore from '../STORE/store';
 import {Provider} from 'react-redux';
 
-export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
-// export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
+// export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
+export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
 
 const App=({Component, pageProps})=>(
   <Provider store={appStore}>
@@ -46,7 +46,7 @@ export function selectAll(){
   .catch(error=>this.setState({db:[],db_loading:false},()=>console.error('Błąd logowania:', error)))
 }
 
-export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)
+// export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)
 
 export const db_query_imitacion={
   insert:(db,data,where)=>{

@@ -1,7 +1,8 @@
 import Element from '../CRUD/Forms/columns/Element';
 import Form from 'react-bootstrap/Form';
 import {ContextOfAuthHOC} from '../login/AuthHoc';
-import {toUpperCase1Char} from '../_app';
+// import {toUpperCase1Char} from '../_app';
+import {toUpperCase1Char} from '@/functions/toUpperCase1Char';
 
 const {Label, Control}=Form
 

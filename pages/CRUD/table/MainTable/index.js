@@ -2,6 +2,7 @@ import THEAD from './thead';
 import TBODY from './tbody';
 import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from '../../..';
+// import {fields} from '../../../_app';
 import fields from '@/config/fields.json'
 
 const MainTable=()=>(

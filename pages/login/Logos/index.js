@@ -1,5 +1,4 @@
-import CONFIG from '@/config/config.json'
-const {height}=CONFIG??{}
+import {height} from "@/pages/_app"
 
 const style={
     display:'grid',

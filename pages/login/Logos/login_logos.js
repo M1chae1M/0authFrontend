@@ -4,8 +4,7 @@ import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../../components/BlueBTN_hover";
 import {url} from "../../_app";
 import LogosContainer from ".";
-import CONFIG from '@/config/config.json'
-const {height}=CONFIG??{}
+import {height} from "../../_app";
 
 export default class LoginLogos extends Component{
     state={

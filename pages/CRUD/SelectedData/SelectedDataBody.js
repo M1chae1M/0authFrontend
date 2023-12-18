@@ -3,6 +3,7 @@ import TBODY from "../table/MainTable/tbody";
 import Table from 'react-bootstrap/Table';
 import {CRUDPageContext} from "../..";
 import {connect} from "react-redux";
+// import {fields} from "@/pages/_app";
 import fields from '@/config/fields.json'
 
 const SelectedDataBody=({selectLoading,reqData})=>(

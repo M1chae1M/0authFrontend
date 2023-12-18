@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {Form} from "react-bootstrap";
 import {CRUDPageContext} from "@/pages";
+// import {fields} from "@/pages/_app";
 import fields from '@/config/fields.json'
 import Where_list_element from "../columns/where_list_element";
 import OneColumn from "../columns/columns";

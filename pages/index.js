@@ -2,8 +2,7 @@ import React,{PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
-import {selectAll} from './_app';
-// import {createFetch} from './_app';
+import {selectAll} from '@/functions/selectAll';
 import {createFetch} from '@/functions/createFetch';
 import TableContainer from './CRUD/table';
 import SelectedData from './CRUD/SelectedData';
@@ -13,8 +12,7 @@ import MessageNoDB from './CRUD/table/MessageNoDB';
 import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
-// import {db_query_imitacion} from './_app';
-import { db_query_imitacion } from '@/functions/db_query_imitacion';
+import {db_query_imitacion} from '@/functions/db_query_imitacion';
 import {connect} from 'react-redux';
 import action from '../STORE/action';
 

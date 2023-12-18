@@ -1,5 +1,4 @@
 import Check from "@/pages/components/check"
-// import {fields} from "@/pages/_app"
 import fields from '@/config/fields.json'
 import {connect} from "react-redux"
 import action from "@/STORE/action"

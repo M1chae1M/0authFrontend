@@ -2,6 +2,7 @@ import CONFIG from '../config/config.json'
 import '../styles/scrollbar.css';
 import appStore from '../STORE/store';
 import {Provider} from 'react-redux';
+import {getToken} from '@/functions/getToken';
 
 // export const url=CONFIG?.production?CONFIG?.url:'0auth-backend.vercel.app'
 export const url=CONFIG?.production?CONFIG?.url:'http://localhost:8080'
@@ -12,9 +13,9 @@ const App=({Component, pageProps})=>(
   </Provider>
 )
 
-function getToken(){
-  return localStorage?.getItem?.('token')??''
-}
+// function getToken(){
+//   return localStorage?.getItem?.('token')??''
+// }
 
 export async function createFetch(path, body, callback=null){
   fetch(`${url}/${path}`,{
@@ -46,8 +47,6 @@ export function selectAll(){
   .catch(error=>this.setState({db:[],db_loading:false},()=>console.error('Błąd logowania:', error)))
 }
 
-// export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)
-
 export const db_query_imitacion={
   insert:(db,data,where)=>{
     const db_copy=[...db];
@@ -72,3 +71,5 @@ export const db_query_imitacion={
 export const height='44px'
 
 export default App
+
+// export const toUpperCase1Char=(text)=>text?.charAt?.(0)?.toUpperCase?.()+text?.slice?.(1)

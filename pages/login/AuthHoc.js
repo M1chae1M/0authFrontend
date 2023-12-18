@@ -1,6 +1,7 @@
 import React,{PureComponent} from 'react'
 import Router from 'next/router'
-import {createFetch} from '../_app'
+// import {createFetch} from '../_app'
+import {createFetch} from '@/functions/createFetch';
 import Menu from '../Menu';
 import Modal from '../Modal';
 import Spinner from '../Modal/Spinner';

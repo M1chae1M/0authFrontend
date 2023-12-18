@@ -1,4 +1,3 @@
-// import {height} from "@/pages/_app"
 import CONFIG from '@/config/config.json'
 const {height}=CONFIG??{}
 

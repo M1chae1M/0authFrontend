@@ -3,7 +3,7 @@ import OnloadAnimation from './OnloadAnimatedContainer';
 import Headers from './Headers';
 import GoToRepo from './GoToRepo';
 import List from './List';
-import {toUpperCase1Char} from '../_app';
+import {toUpperCase1Char} from '@/functions/toUpperCase1Char';
 import {url} from '../_app';
 
 export default class Template extends Component{

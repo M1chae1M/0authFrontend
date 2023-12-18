@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../../components/BlueBTN_hover";
 import {url} from "../../_app";
 import LogosContainer from ".";
-// import {height} from "../../_app";
 import CONFIG from '@/config/config.json'
 const {height}=CONFIG??{}
 

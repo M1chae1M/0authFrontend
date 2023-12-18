@@ -1,4 +1,4 @@
-import {createFetch} from '../../_app'
+import {createFetch} from '@/functions/createFetch';
 import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate"

@@ -9,6 +9,7 @@ const style={
     left:'0%',
     zIndex:500,
     background:'white',
+    userSelect:'none',
 }
 
 const MenuContainer=({children})=>(

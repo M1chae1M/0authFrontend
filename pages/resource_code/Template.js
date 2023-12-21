@@ -4,7 +4,8 @@ import Headers from './Headers';
 import GoToRepo from './GoToRepo';
 import List from './List';
 import {toUpperCase1Char} from '@/functions/toUpperCase1Char';
-import {url} from '../_app';
+import CONFIG from '@/config/config.json'
+const {url}=CONFIG
 
 export default class Template extends Component{
     state={

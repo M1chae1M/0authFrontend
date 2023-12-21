@@ -1,5 +1,6 @@
 import {getToken} from '@/functions/getToken';
-import { url } from '@/pages/_app';
+import CONFIG from '@/config/config.json'
+const {url}=CONFIG
 
 export async function createFetch(path, body, callback=null){
     fetch(`${url}/${path}`,{

@@ -2,10 +2,9 @@ import {Component} from "react";
 import {BiLogoGithub,BiLogoGoogle,BiLogoFacebookCircle} from 'react-icons/bi'
 import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../../components/BlueBTN_hover";
-import {url} from "../../_app";
-import LogosContainer from ".";
 import CONFIG from '@/config/config.json'
-const {height}=CONFIG??{}
+import LogosContainer from ".";
+const {height,url}=CONFIG??{}
 
 export default class LoginLogos extends Component{
     state={

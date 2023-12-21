@@ -1,5 +1,6 @@
 import {getToken} from "./getToken"
-import {url} from "@/pages/_app"
+import CONFIG from '@/config/config.json'
+const {url}=CONFIG
 
 export function selectAll(){
     const {page,limit}=this.props

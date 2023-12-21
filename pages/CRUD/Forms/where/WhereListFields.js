@@ -3,22 +3,19 @@ import fields from '@/config/fields.json'
 import {connect} from "react-redux"
 import action from "@/STORE/action"
 
-const WhereListFields=({where,change_state})=>(
+const WhereListFields=({change_where_list})=>(
     fields?.map(x=>(
         <Check key={x} value={x} onChange={(e)=>{
             const {value, checked}=e.target
-            const _copy=where;
-            !checked && delete _copy?.[value];
-            change_state({ where:checked?{..._copy, [value]:''}:_copy });
+            change_where_list({value, checked});
         }}/>
     ))
 )
 
 const mapStateToProps=(state)=>({
-    where:state.where,
 })
 const mapDispatchToProps=(dispatch)=>({
-    change_state:(newState)=>dispatch(action.change_state(newState)),
+    change_where_list:(payload)=>dispatch(action.change_where_list(payload))
 })
   
 export default connect(mapStateToProps,mapDispatchToProps)(WhereListFields)

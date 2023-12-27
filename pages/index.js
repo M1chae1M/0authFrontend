@@ -1,4 +1,4 @@
-import React,{PureComponent} from 'react'
+import React,{Component, PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
@@ -18,7 +18,12 @@ import action from '../STORE/action';
 
 export const CRUDPageContext=React.createContext()
 
-class App extends PureComponent{
+// import {getToken} from '@/functions/getToken';
+// import CONFIG from '@/config/config.json'
+// const {url}=CONFIG
+
+class App extends Component{
+// class App extends PureComponent{
   state={
     data:{},
     db:[],
@@ -26,6 +31,18 @@ class App extends PureComponent{
   }
   componentDidMount=selectAll.bind(this)
   componentDidUpdate=selectAll.bind(this)
+  shouldComponentUpdate(nextProps, nextState){
+    console.log(
+      nextState.db,
+      this.state.db
+    )
+    // return !_.isEqual(nextState,this.state)
+    return nextState.db_loading !== this.state.db_loading ||
+    // nextState.db !== this.state.db
+    !_.isEqual(nextState.db, this.state.db)
+    // return !_.isEqual(nextState.data, this.state.data) || !_.isEqual(nextState.db, this.state.db) || nextState.db_loading !== this.state.db_loading
+  }
+  // shouldComponentUpdate=(nextProps, nextState)=>!_.isEqual(nextState.data, this.state.data) || !_.isEqual(nextState.db, this.state.db) || !nextState.db_loading !== this.state.db_loading
   render(){
     const {db,data,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where}=this.props
@@ -37,7 +54,7 @@ class App extends PureComponent{
       change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
       await createFetch(formState,{data, where},(data)=>{
         const reqData=db_query_imitacion?.[formState]?.(db,data,where) || data
-        changeState({db:reqData});
+        this.setState({db:reqData})
         change_state({selectLoading:false,reqData})
       })
     }
@@ -71,15 +88,7 @@ class App extends PureComponent{
   }
 }
 
-const mapStateToProps=(state)=>({
-  selectLoading:state.selectLoading,
-  formState:state.formState,
-  showModal:state.showModal,
-  limit:state.limit,
-  page:state.page,
-  reqData:state.reqData,
-  where:state.where,
-})
+const mapStateToProps=({selectLoading,formState,showModal,limit,page,reqData,where})=>({selectLoading,formState,showModal,limit,page,reqData,where})
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),
 })

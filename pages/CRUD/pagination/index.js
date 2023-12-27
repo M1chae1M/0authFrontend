@@ -9,11 +9,7 @@ class TablePagination extends Component{
     state={
         count:1,
     }
-    componentDidMount(){
-        createFetch(`count`,{},({count})=>{
-            this.setState({count:Math.ceil(count/this.props.limit)})
-        })
-    }
+    componentDidMount=()=>createFetch(`count`,{},({count})=>this.setState({count:Math.ceil(count/this.props.limit)}))
     render(){
         const {count}=this.state
         const styles={

@@ -13,6 +13,5 @@ export function selectAll(){
     })
     .then(res=>res.json())
     .then((data)=>this.setState({db:data, db_loading:false}))
-    .then((res)=>console.log(`fetch/all/${page}/${limit}`))
     .catch(error=>this.setState({db:[],db_loading:false},()=>console.error('Błąd logowania:', error)))
 }

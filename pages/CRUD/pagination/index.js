@@ -24,9 +24,12 @@ class TablePagination extends Component{
         return(
             <CRUDPageContext.Consumer>
             {value=>{
-                const {db}=value??{}
+                const {db,selectAll}=value??{}
                 const {change_state}=this.props
-                const handlePageClick=({selected})=>change_state({page:selected})
+                const handlePageClick=async({selected})=>{
+                    await change_state({page:selected});
+                    selectAll?.();
+                }
                 return(
                     db?.length>0 &&
                     <div style={styles}>

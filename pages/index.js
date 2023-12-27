@@ -1,4 +1,4 @@
-import React,{Component, PureComponent} from 'react'
+import React,{PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
@@ -18,31 +18,13 @@ import action from '../STORE/action';
 
 export const CRUDPageContext=React.createContext()
 
-// import {getToken} from '@/functions/getToken';
-// import CONFIG from '@/config/config.json'
-// const {url}=CONFIG
-
-class App extends Component{
-// class App extends PureComponent{
+class App extends PureComponent{
   state={
     data:{},
     db:[],
     db_loading:true,
   }
   componentDidMount=selectAll.bind(this)
-  componentDidUpdate=selectAll.bind(this)
-  shouldComponentUpdate(nextProps, nextState){
-    console.log(
-      nextState.db,
-      this.state.db
-    )
-    // return !_.isEqual(nextState,this.state)
-    return nextState.db_loading !== this.state.db_loading ||
-    // nextState.db !== this.state.db
-    !_.isEqual(nextState.db, this.state.db)
-    // return !_.isEqual(nextState.data, this.state.data) || !_.isEqual(nextState.db, this.state.db) || nextState.db_loading !== this.state.db_loading
-  }
-  // shouldComponentUpdate=(nextProps, nextState)=>!_.isEqual(nextState.data, this.state.data) || !_.isEqual(nextState.db, this.state.db) || !nextState.db_loading !== this.state.db_loading
   render(){
     const {db,data,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where}=this.props
@@ -69,7 +51,9 @@ class App extends Component{
       changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal}}>
+      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal,
+      selectAll:selectAll.bind(this)
+      }}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>

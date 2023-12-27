@@ -27,14 +27,14 @@ class App extends PureComponent{
   componentDidMount=selectAll.bind(this)
   render(){
     const {db,data,db_loading}=this.state
-    const {logged,isLoggedFunction,formState,change_state,where}=this.props
+    const {logged,isLoggedFunction,formState,change_state,where,limit,page}=this.props
     const changeState=(newState)=>this.setState(newState)
     const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
       e.preventDefault()
       await isLoggedFunction()
       change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
-      await createFetch(formState,{data, where},(data)=>{
+      await createFetch(formState,{data, where,offset_data:{limit,page}},(data)=>{
         const reqData=db_query_imitacion?.[formState]?.(db,data,where) || data
         this.setState({db:reqData})
         change_state({selectLoading:false,reqData})

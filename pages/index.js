@@ -12,7 +12,6 @@ import MessageNoDB from './CRUD/table/MessageNoDB';
 import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
-import {db_query_imitacion} from '@/functions/db_query_imitacion';
 import {connect} from 'react-redux';
 import action from '../STORE/action';
 
@@ -34,8 +33,8 @@ class App extends PureComponent{
       e.preventDefault()
       await isLoggedFunction()
       change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
-      await createFetch(formState,{data, where,offset_data:{limit,page}},(data)=>{
-        const reqData=db_query_imitacion?.[formState]?.(db,data,where) || data
+      await createFetch(formState,{data, where,offset_data:{limit,page}},({query_req, db_query_imitation})=>{
+        const reqData=db_query_imitation || query_req
         this.setState({db:reqData})
         change_state({selectLoading:false,reqData})
       })

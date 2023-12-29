@@ -1,8 +1,8 @@
-import React,{Component, PureComponent} from 'react'
+import React,{PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
-import {selectAll} from '@/functions/selectAll';
+import select from '@/functions/selectAll';
 import {createFetch} from '@/functions/createFetch';
 import TableContainer from './CRUD/table';
 import SelectedData from './CRUD/SelectedData';
@@ -23,8 +23,7 @@ class App extends PureComponent{
     db:[],
     db_loading:true,
   }
-  componentDidMount=selectAll.bind(this)
-  testSelect=selectAll.bind(this)
+  componentDidMount=select.bind(this)
   render(){
     const {db,data,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where,limit,page}=this.props
@@ -39,7 +38,7 @@ class App extends PureComponent{
 
         if(reqData?.length===0){
           await change_state({selectLoading:false})
-          this.testSelect();
+          select.bind(this)();
           change_state({page:0})
         }else{
           this.setState({db:reqData})
@@ -59,7 +58,7 @@ class App extends PureComponent{
     }
     return(
       <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal,
-      selectAll:selectAll.bind(this)
+      selectAll:select.bind(this)
       }}>
         <div className='container mt-5'>
           <TableContainer height='250px'>

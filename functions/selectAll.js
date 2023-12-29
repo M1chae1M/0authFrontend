@@ -5,7 +5,7 @@ const {url}=CONFIG
 import action from "@/STORE/action"
 import appStore from "@/STORE/store"
 
-export function selectAll(){
+export default function selectAll(){
     const {page,limit}=this.props
   
     return fetch(`${url}/all/${page}/${limit}`,{

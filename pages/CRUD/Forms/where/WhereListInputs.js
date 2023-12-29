@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 import Where_list_element from "../columns/where_list_element"
-import action from "@/STORE/action"
+import action from "@/STORE/CRUD/action"
 
 const WhereListInputs=({where,change_state})=>(
     Object.keys(where??{})?.map(x=>(
@@ -13,8 +13,8 @@ const WhereListInputs=({where,change_state})=>(
     )
 )
 
-const mapStateToProps=(state)=>({
-    where:state.where,
+const mapStateToProps=({crud:{where}})=>({
+    where,
 })
 const mapDispatchToProps=(dispatch)=>({
     change_state:(newState)=>dispatch(action.change_state(newState)),

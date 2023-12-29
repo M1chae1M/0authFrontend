@@ -3,7 +3,7 @@ import fields from '@/config/fields.json'
 import Where_list_element from "../columns/where_list_element";
 import OneColumn from "../columns/columns";
 import {connect} from "react-redux";
-import action from "@/STORE/action";
+import action from "@/STORE/CRUD/action";
 const {Label}=Form
 
 const InsertForm=({change_data})=>{

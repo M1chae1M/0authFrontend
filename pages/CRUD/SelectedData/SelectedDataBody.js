@@ -16,7 +16,7 @@ const SelectedDataBody=({selectLoading,reqData,data})=>{
     )
 }
 
-const mapStateToProps=({selectLoading,reqData,data})=>({selectLoading,reqData,data})
+const mapStateToProps=({crud:{selectLoading,reqData,data}})=>({selectLoading,reqData,data})
 const mapDispatchToProps=(dispatch)=>({})
 
 export default connect(mapStateToProps,mapDispatchToProps)(SelectedDataBody)

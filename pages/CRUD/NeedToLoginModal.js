@@ -3,7 +3,7 @@ import DisplayAlert from "../Modal/DisplayAlert"
 import CloseButton from "../Modal/DisplayAlert/CloseButton"
 import {CRUDPageContext} from ".."
 import {connect} from "react-redux"
-import action from "@/STORE/action"
+import action from "@/STORE/CRUD/action"
 
 const NeedToLoginModal=({showModal, close_modal})=>(
     <CRUDPageContext.Consumer>
@@ -25,8 +25,8 @@ const NeedToLoginModal=({showModal, close_modal})=>(
     </CRUDPageContext.Consumer>
 )
 
-const mapStateToProps=(state)=>({
-    showModal:state.showModal,
+const mapStateToProps=({crud:{showModal}})=>({
+    showModal,
 })
 const mapDispatchToProps=(dispatch)=>({
     close_modal:()=>dispatch(action.close_modal())

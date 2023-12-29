@@ -3,7 +3,7 @@ import {CRUDPageContext} from '../..'
 import React,{Component} from 'react'
 import ReactPaginate from "react-paginate";
 import {connect} from 'react-redux';
-import action from '@/STORE/action';
+import action from '@/STORE/CRUD/action';
 
 class TablePagination extends Component{
     state={
@@ -51,8 +51,8 @@ class TablePagination extends Component{
     }
 }
 
-const mapStateToProps=(state)=>({
-    limit:state.limit,
+const mapStateToProps=({crud:{limit}})=>({
+    limit,
 })
 const mapDispatchToProps=(dispatch)=>({
     change_state:(newState)=>dispatch(action.change_state(newState)),

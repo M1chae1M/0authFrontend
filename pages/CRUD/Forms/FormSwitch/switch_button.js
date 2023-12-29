@@ -2,7 +2,7 @@ import {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import styled from "styled-components";
 import {connect}from "react-redux";
-import action from "@/STORE/action";
+import action from "@/STORE/CRUD/action";
 
 const Button_hover=styled(Button)`
 &:hover{
@@ -24,7 +24,7 @@ class SwitchButton extends Component{
     }
 }
 
-const mapStateToProps=({formState})=>({formState})
+const mapStateToProps=({crud:{formState}})=>({formState})
 const mapDispatchToProps=(dispatch)=>({
     change_state:(newValue)=>dispatch(action.change_state(newValue)),
 })

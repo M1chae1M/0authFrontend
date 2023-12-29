@@ -8,7 +8,7 @@ import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
 import {useContext} from "react";
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import action from "@/STORE/action";
+import action from "@/STORE/CRUD/action";
 
 const SelectedData=({showModal,close_modal})=>{
     const styles={
@@ -32,8 +32,8 @@ const SelectedData=({showModal,close_modal})=>{
     )
 }
   
-const mapStateToProps=(state)=>({
-    showModal:state.showModal,
+const mapStateToProps=({crud:{showModal}})=>({
+    showModal,
 })
 const mapDispatchToProps=(dispatch)=>({
     close_modal:()=>dispatch(action.close_modal())

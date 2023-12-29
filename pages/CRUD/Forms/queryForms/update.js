@@ -5,7 +5,7 @@ import Where_list_element from "../columns/where_list_element";
 import {LeftColumn, RightColumn} from "../columns/columns";
 import WHERE from "../where";
 import {connect} from "react-redux";
-import action from "@/STORE/action";
+import action from "@/STORE/CRUD/action";
 
 const {Label}=Form
 
@@ -27,7 +27,7 @@ const UpdateForm=({data,change_data_checkboxes,change_data})=>{
         )
 }
 
-const mapStateToProps=({data})=>({data})
+const mapStateToProps=({crud:{data}})=>({data})
 const mapDispatchToProps=(dispatch)=>({
     change_data:(value)=>dispatch(action.change_data(value)),
     change_data_checkboxes:(value)=>dispatch(action.change_data_checkboxes(value)),

@@ -4,7 +4,7 @@ import Check from "../../../components/check";
 import {LeftColumn, RightColumn} from "../columns/columns";
 import WHERE from "../where";
 import {connect} from "react-redux";
-import action from "@/STORE/action";
+import action from "@/STORE/CRUD/action";
 
 const {Label}=Form
 

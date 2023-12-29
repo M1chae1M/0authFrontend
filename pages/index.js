@@ -13,7 +13,7 @@ import MainTable from './CRUD/table/MainTable';
 import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 import {connect} from 'react-redux';
-import action from '../STORE/action';
+import action from '../STORE/CRUD/action';
 
 export const CRUDPageContext=React.createContext()
 
@@ -65,7 +65,7 @@ class App extends PureComponent{
   }
 }
 
-const mapStateToProps=({selectLoading,formState,showModal,limit,page,reqData,where,data})=>({selectLoading,formState,showModal,limit,page,reqData,where,data})
+const mapStateToProps=({crud:{selectLoading,formState,showModal,limit,page,reqData,where,data}})=>({selectLoading,formState,showModal,limit,page,reqData,where,data})
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),
 })

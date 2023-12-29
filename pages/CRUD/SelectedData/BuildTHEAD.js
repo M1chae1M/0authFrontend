@@ -6,11 +6,10 @@ const BuildTHEAD=({loadingFields,selectLoading,reqData})=>{
     return KEYs && <THEAD fields={KEYs}/>
 }
 
-const mapStateToProps=(state)=>({
-    selectLoading:state.selectLoading,
-    reqData:state.reqData,
+const mapStateToProps=({crud:{selectLoading,reqData}})=>({
+    selectLoading,
+    reqData,
 })
-const mapDispatchToProps=(dispatch)=>({
-})
+const mapDispatchToProps=(dispatch)=>({})
   
 export default connect(mapStateToProps,mapDispatchToProps)(BuildTHEAD)

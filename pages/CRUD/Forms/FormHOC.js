@@ -40,8 +40,8 @@ const FormHOC=({formState})=>(
     </CRUDPageContext.Consumer>
 )
 
-const mapStateToProps=(state)=>({
-    formState:state.formState,
+const mapStateToProps=({crud:{formState}})=>({
+    formState,
 })
 const mapDispatchToProps=(dispatch)=>({
 })

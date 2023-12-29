@@ -2,7 +2,7 @@ import {getToken} from "./getToken"
 import CONFIG from '@/config/config.json'
 const {url}=CONFIG
 
-import action from "@/STORE/action"
+import action from "@/STORE/CRUD/action"
 import appStore from "@/STORE/store"
 
 export default function selectAll(){

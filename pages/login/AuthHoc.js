@@ -5,8 +5,6 @@ import Menu from '../Menu';
 import Modal from '../Modal';
 import Spinner from '../Modal/Spinner';
 import LoginMessage from './loginMessage';
-// import {connect} from 'react-redux';
-// import action from '@/STORE/auth/action';
 
 export const ContextOfAuthHOC=React.createContext()
 
@@ -35,9 +33,7 @@ const AuthHOC=(ToWrap)=>(
         componentDidUpdate=()=>this.isLogged()
         render(){
             const {url}=this.props
-            // const {login_loading_state}=this.props
             const {login_loading_state,login,password,email,age,logged,showSelected,loginMessage,success}=this.state
-            // const {login,password,email,age,logged,showSelected,loginMessage,success}=this.state
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged()
             const changeAuthHOC=(newState)=>this.setState(newState)
@@ -82,8 +78,3 @@ const AuthHOC=(ToWrap)=>(
 )
 
 export default AuthHOC
-// const mapStateToProps=()=>({})
-// const mapDispatchToProps=(dispatch)=>({
-//     change_state:(newState)=>dispatch(action.change_state(newState))
-// })
-// export default connect(mapStateToProps, mapDispatchToProps)(AuthHOC)

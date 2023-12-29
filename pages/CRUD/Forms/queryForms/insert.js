@@ -7,7 +7,7 @@ import action from "@/STORE/action";
 const {Label}=Form
 
 const InsertForm=({change_data})=>{
-    const DataInputs=fields?.map(x=><Where_list_element key={x} name={x} onChange={({target})=>change_data({[field]:target.value})}/>)
+    const DataInputs=fields?.map(x=><Where_list_element key={x} name={x} onChange={({target})=>change_data({[x]:target.value})}/>)
     return(
         <OneColumn>
             <div><Label>Data: </Label></div>

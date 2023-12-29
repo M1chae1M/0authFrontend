@@ -12,7 +12,7 @@ export default class InsertForm extends Component{
             <CRUDPageContext.Consumer>
             {value=>{
                 const {changeValues}=value??{}
-                const DataInputs=fields?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,'data',x)}/>)
+                const DataInputs=fields?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>changeValues(e,x)}/>)
                 return(
                     <OneColumn>
                         <div><Label>Data: </Label></div>

@@ -14,7 +14,8 @@ export default class SelectForm extends Component{
             <CRUDPageContext.Consumer>
             {value=>{
                 const {onChangeDataBox}=value??{}
-                const DataFields=fields?.map(x=><Check key={x} value={x} onChange={(e)=>{onChangeDataBox(e, 'data')}}/>)
+                // const DataFields=fields?.map(x=><Check key={x} value={x} onChange={(e)=>{onChangeDataBox(e, 'data')}}/>)
+                const DataFields=fields?.map(x=><Check key={x} value={x} onChange={(e)=>{onChangeDataBox(e)}}/>)
                 return(
                     <>
                         <LeftColumn>

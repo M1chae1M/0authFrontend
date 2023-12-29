@@ -15,9 +15,10 @@ export default class UpdateForm extends Component{
             <CRUDPageContext.Consumer>
             {value=>{
                 const {changeValues,data,onChangeDataBox}=value??{}
-                const onChange=(e)=>onChangeDataBox(e,'data')
+                // const onChange=(e)=>onChangeDataBox(e,'data')
+                const onChange=(e)=>onChangeDataBox(e)
                 const DataFields=fields?.map(x=><Check key={x} value={x} onChange={onChange}/>)
-                const DataInputs=Object.keys(data??{})?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>{changeValues(e,'data',x)}}/>)
+                const DataInputs=Object.keys(data??{})?.map(x=><Where_list_element key={x} name={x} onChange={(e)=>{changeValues(e,x)}}/>)
                 return(
                     <>
                         <LeftColumn>

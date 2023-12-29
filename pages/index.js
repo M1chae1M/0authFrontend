@@ -46,15 +46,15 @@ class App extends PureComponent{
         }
       })
     }
-    const onChangeDataBox=(e, state)=>{
+    const onChangeDataBox=(e)=>{
       const {value, checked}=e.target
-      const _copy=this.state?.[state];
+      const _copy=this.state.data;
       !checked && delete _copy?.[value];
-      changeState({ [state]:checked?{..._copy, [value]:''}:_copy });
+      changeState({ data:checked?{..._copy, [value]:''}:_copy });
     }
-    const changeValues=(e, state, field)=>{
+    const changeValues=(e, field)=>{
       const {value}=e.target
-      changeState({ [state]:{...this.state?.[state], [field]:value===''?'':value} })
+      changeState({ data:{...this.state.data, [field]:value===''?'':value} })
     }
     return(
       <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal,

@@ -19,15 +19,13 @@ export const CRUDPageContext=React.createContext()
 
 class App extends PureComponent{
   state={
-    data:{},
     db:[],
     db_loading:true,
   }
   componentDidMount=select.bind(this)
   render(){
-    const {db,data,db_loading}=this.state
-    const {logged,isLoggedFunction,formState,change_state,where,limit,page}=this.props
-    const changeState=(newState)=>this.setState(newState)
+    const {db,db_loading}=this.state
+    const {logged,isLoggedFunction,formState,change_state,where,limit,page,data}=this.props
     const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
       e.preventDefault()
@@ -41,24 +39,14 @@ class App extends PureComponent{
           select.bind(this)();
           change_state({page:0})
         }else{
-          this.setState({db:reqData})
+          formState!=='select' && this.setState({db:reqData});
           change_state({selectLoading:false,reqData})
         }
       })
     }
-    const onChangeDataBox=(e)=>{
-      const {value, checked}=e.target
-      const _copy=this.state.data;
-      !checked && delete _copy?.[value];
-      changeState({ data:checked?{..._copy, [value]:''}:_copy });
-    }
-    const changeValues=(e, field)=>{
-      const {value}=e.target
-      changeState({ data:{...this.state.data, [field]:value===''?'':value} })
-    }
     return(
-      <CRUDPageContext.Provider value={{submit,changeValues,onChangeDataBox,changeState,data,db_loading,db,logged,closeModal,
-      selectAll:select.bind(this)
+      <CRUDPageContext.Provider value={{submit,db_loading,db,logged,closeModal,
+        selectAll:select.bind(this)
       }}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
@@ -78,7 +66,7 @@ class App extends PureComponent{
   }
 }
 
-const mapStateToProps=({selectLoading,formState,showModal,limit,page,reqData,where})=>({selectLoading,formState,showModal,limit,page,reqData,where})
+const mapStateToProps=({selectLoading,formState,showModal,limit,page,reqData,where,data})=>({selectLoading,formState,showModal,limit,page,reqData,where,data})
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),
 })

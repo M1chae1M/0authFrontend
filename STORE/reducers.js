@@ -8,6 +8,7 @@ const initState={
     page:0,
     reqData:[],
     where:{},
+    data:{},
 }
 
 const reducer=(state=initState, action)=>{
@@ -26,6 +27,20 @@ const reducer=(state=initState, action)=>{
             }
 
             return {...state, where}
+        }
+        case types.CHANGE_DATA:{
+            return {...state, data:{...state.data,...action.payload}}
+        }
+        case types.CHANGE_DATA_CHECKBOXES:{
+            const {value,checked}=action.payload
+            const data={...state.data};
+
+            if(checked){
+                return {...state, data:{...data, [value]:''}}
+            }else{
+                delete data?.[value];
+                return {...state, data:data}
+            }
         }
         default:
             return state

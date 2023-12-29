@@ -1,4 +1,4 @@
-import React,{PureComponent} from 'react'
+import React,{Component, PureComponent} from 'react'
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
@@ -24,6 +24,7 @@ class App extends PureComponent{
     db_loading:true,
   }
   componentDidMount=selectAll.bind(this)
+  testSelect=selectAll.bind(this)
   render(){
     const {db,data,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where,limit,page}=this.props
@@ -33,10 +34,17 @@ class App extends PureComponent{
       e.preventDefault()
       await isLoggedFunction()
       change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
-      await createFetch(formState,{data, where,offset_data:{limit,page}},({query_req, db_query_imitation})=>{
+      await createFetch(formState,{data, where,offset_data:{limit,page}},async({query_req, db_query_imitation})=>{
         const reqData=db_query_imitation || query_req
-        this.setState({db:reqData})
-        change_state({selectLoading:false,reqData})
+
+        if(reqData?.length===0){
+          await change_state({selectLoading:false})
+          this.testSelect();
+          change_state({page:0})
+        }else{
+          this.setState({db:reqData})
+          change_state({selectLoading:false,reqData})
+        }
       })
     }
     const onChangeDataBox=(e, state)=>{

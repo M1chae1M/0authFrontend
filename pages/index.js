@@ -26,7 +26,6 @@ class App extends PureComponent{
   render(){
     const {db,db_loading}=this.state
     const {logged,isLoggedFunction,formState,change_state,where,limit,page,data}=this.props
-    const closeModal=()=>change_state({showModal:false})
     const submit=async(e)=>{
       e.preventDefault()
       await isLoggedFunction()
@@ -45,7 +44,7 @@ class App extends PureComponent{
       })
     }
     return(
-      <CRUDPageContext.Provider value={{submit,db_loading,db,logged,closeModal,
+      <CRUDPageContext.Provider value={{submit,db_loading,db,logged,
         selectAll:select.bind(this)
       }}>
         <div className='container mt-5'>

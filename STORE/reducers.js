@@ -42,6 +42,9 @@ const reducer=(state=initState, action)=>{
                 return {...state, data:data}
             }
         }
+        case types.CLOSE_MODAL:{
+            return {...state, showModal:false}
+        }
         default:
             return state
     }

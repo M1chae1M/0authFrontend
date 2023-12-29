@@ -8,15 +8,16 @@ import {ContextOfAuthHOC} from "@/pages/login/AuthHoc";
 import {useContext} from "react";
 import {useEffect} from "react";
 import {connect} from "react-redux";
+import action from "@/STORE/action";
 
-const SelectedData=({showModal})=>{
+const SelectedData=({showModal,close_modal})=>{
     const styles={
         minHeight:'20vh',
         minHeight:'40vh',
         minWidth:'40vw',
         maxWidth:'80%',
     }
-    const {closeModal,logged}=useContext(CRUDPageContext)??{};
+    const {logged}=useContext(CRUDPageContext)??{};
     const {changeAuthHOC}=useContext(ContextOfAuthHOC)??{};
     useEffect(()=>changeAuthHOC?.({showSelected:showModal&&logged}),[showModal,logged,changeAuthHOC]);
     return(
@@ -25,7 +26,7 @@ const SelectedData=({showModal})=>{
                 <TableContainer height='30vh'>
                     <SelectedDataBody/>
                 </TableContainer>
-                <CloseButton onClick={closeModal}/>
+                <CloseButton onClick={close_modal}/>
             </DisplayAlert>
         </Modal>
     )
@@ -35,6 +36,7 @@ const mapStateToProps=(state)=>({
     showModal:state.showModal,
 })
 const mapDispatchToProps=(dispatch)=>({
+    close_modal:()=>dispatch(action.close_modal())
 })
   
 export default connect(mapStateToProps,mapDispatchToProps)(SelectedData)

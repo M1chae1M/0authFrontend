@@ -25,14 +25,15 @@ class LoginLogos extends Component{
         const logo={
             cursor:'pointer'
         }
-        const authenticate=(method)=>{
+        const authenticate=async(method)=>{
             const authWindow=window.open(`${url}/auth/${method}`, `Authenticate with ${method}`, 'width=650,height=400,resizable=false,scrollbars=false');
             start_waiting_for_login();
-            authWindow.onbeforeunload=()=>stop_waiting_for_login();
-            const checkAuthWindowInterval=setInterval(()=>{
+            authWindow.onbeforeunload=async()=>await stop_waiting_for_login();
+            authWindow.onbeforeunload=null;
+            const checkAuthWindowInterval=setInterval(async()=>{
                 if(authWindow && authWindow.closed){
                     clearInterval(checkAuthWindowInterval);
-                    stop_waiting_for_login();
+                    await stop_waiting_for_login();
                 }
             }, 500);
         }

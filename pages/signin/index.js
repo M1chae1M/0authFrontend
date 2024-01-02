@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import AuthHOC from "@/pages/login/AuthHoc";
 import LoginLogos from "../login/Logos/login_logos";
 import FormElement from '../components/FormElementBuilder';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import action from '@/STORE/auth/action';
 
 const Signin=({signinWithLogin,changeAuthHOC})=>(

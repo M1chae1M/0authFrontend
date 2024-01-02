@@ -24,14 +24,14 @@ class TablePagination extends Component{
         return(
             <CRUDPageContext.Consumer>
             {value=>{
-                const {db,selectAll}=value??{}
+                const {db,selectAll,logged}=value??{}
                 const {change_state}=this.props
                 const handlePageClick=async({selected})=>{
                     await change_state({page:selected});
                     selectAll?.();
                 }
                 return(
-                    db?.length>0 &&
+                    db?.length>0 && logged &&
                     <div style={styles}>
                         <ReactPaginate
                             previousLabel={"<"}

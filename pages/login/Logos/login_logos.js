@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import BlueBTN_hover from "../../components/BlueBTN_hover";
 import CONFIG from '@/config/config.json'
 import LogosContainer from ".";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import action from "@/STORE/auth/action";
 const {height,url}=CONFIG??{}
 

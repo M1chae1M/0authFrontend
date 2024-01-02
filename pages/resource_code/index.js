@@ -3,7 +3,7 @@ import Readme from "./readme";
 import Frontend from "./frontend";
 import Backend from "./backend";
 import {Container} from 'react-bootstrap';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import action from "@/STORE/auth/action";
 
 const ResourceCode=()=>(

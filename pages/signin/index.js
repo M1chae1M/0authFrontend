@@ -17,7 +17,7 @@ const Signin=({signinWithLogin,changeAuthHOC})=>(
 )
 
 // export default AuthHOC(Signin)
-const mapStateToProps=({})=>({})
+const mapStateToProps=({auth:{login_loading_state}})=>({login_loading_state})
 const mapDispatchToProps=(dispatch)=>({})
 
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(Signin))

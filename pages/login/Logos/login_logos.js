@@ -47,7 +47,7 @@ class LoginLogos extends Component{
     }
 }
 
-const mapStateToProps=()=>({})
+const mapStateToProps=({auth:{login_loading_state}})=>({login_loading_state})
 const mapDispatchToProps=(dispatch)=>({
     stop_waiting_for_login:()=>dispatch(action.stop_waiting_for_login()),
     start_waiting_for_login:()=>dispatch(action.start_waiting_for_login()),

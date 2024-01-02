@@ -31,7 +31,7 @@ const Error404=()=>(
 )
 
 // export default AuthHOC(Error404)
-const mapStateToProps=({})=>({})
+const mapStateToProps=({auth:{login_loading_state}})=>({login_loading_state})
 const mapDispatchToProps=(dispatch)=>({})
     
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(Error404))

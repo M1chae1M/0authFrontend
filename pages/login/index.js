@@ -15,7 +15,7 @@ const Login=({loginFunction})=>(
 )
 
 // export default AuthHOC(Login)
-const mapStateToProps=({})=>({})
+const mapStateToProps=({auth:{login_loading_state}})=>({login_loading_state})
 const mapDispatchToProps=(dispatch)=>({})
 
 export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(Login))

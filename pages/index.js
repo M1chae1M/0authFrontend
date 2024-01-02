@@ -65,6 +65,7 @@ class App extends PureComponent{
   }
 }
 
+// const mapStateToProps=({crud:{selectLoading,formState,showModal,limit,page,reqData,where,data}})=>({selectLoading,formState,showModal,limit,page,reqData,where,data})
 const mapStateToProps=({crud:{selectLoading,formState,showModal,limit,page,reqData,where,data}})=>({selectLoading,formState,showModal,limit,page,reqData,where,data})
 const mapDispatchToProps=(dispatch)=>({
   change_state:(newState)=>dispatch(action.change_state(newState)),

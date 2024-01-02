@@ -3,7 +3,8 @@ import BlueBTN_hover from "./components/BlueBTN_hover";
 import AuthHOC from "./login/AuthHoc";
 import Headers from "./resource_code/Headers";
 import Modal from "./Modal";
-
+import action from "@/STORE/auth/action";
+import {connect} from "react-redux";
 
 const styles={
     margin:'15px',
@@ -29,4 +30,8 @@ const Error404=()=>(
     </Modal>
 )
 
-export default AuthHOC(Error404)
+// export default AuthHOC(Error404)
+const mapStateToProps=({})=>({})
+const mapDispatchToProps=(dispatch)=>({})
+    
+export default connect(mapStateToProps,mapDispatchToProps)(AuthHOC(Error404))

@@ -12,7 +12,6 @@ const AuthHOC=(ToWrap)=>(
     class HOC extends PureComponent{
         state={
             logged:false,
-            login_loading_state:false,
             login:'login',
             password:'login',
             email:'',
@@ -32,19 +31,19 @@ const AuthHOC=(ToWrap)=>(
         componentDidMount=()=>this.isLogged()
         componentDidUpdate=()=>this.isLogged()
         render(){
-            const {url}=this.props
-            const {login_loading_state,login,password,email,age,logged,showSelected,loginMessage,success}=this.state
+            const {login,password,email,age,logged,showSelected,loginMessage,success}=this.state
+            const {url,login_loading_state,stop_waiting_for_login,start_waiting_for_login}=this.props
             const formData={login,password,email,age}
             const isLoggedFunction=()=>this.isLogged()
             const changeAuthHOC=(newState)=>this.setState(newState)
             const changeV=({target:{name,value}})=>this.setState({[name]:value})
             const loginCreator=(e, path, send)=>{
                 e.preventDefault()
-                this.setState({login_loading_state:true})
-
+                start_waiting_for_login();
                 createFetch(`${path}`,send,(data)=>{
                     localStorage.setItem('token',data.token);
-                    this.setState({login_loading_state:false, logged:data.success??true,loginMessage:data.message,success:data.success})
+                    stop_waiting_for_login()
+                    this.setState({logged:data.success??true,loginMessage:data.message,success:data.success})
                 })
             }
             const loginFunction=(e)=>{

@@ -3,7 +3,6 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import FormHOC from './CRUD/Forms/FormHOC';
 import FormSwitches from './CRUD/Forms/FormSwitch/FormSwitches';
 import select from '@/functions/selectAll';
-import {createFetch} from '@/functions/createFetch';
 import TableContainer from './CRUD/table';
 import SelectedData from './CRUD/SelectedData';
 import AuthHOC from './login/AuthHoc';
@@ -14,6 +13,7 @@ import _ from 'lodash';
 import TablePagination from './CRUD/pagination';
 import {connect} from 'react-redux';
 import action from '../STORE/CRUD/action';
+import submitForm from '../functions/submit';
 
 export const CRUDPageContext=React.createContext()
 
@@ -25,28 +25,11 @@ class App extends PureComponent{
   componentDidMount=select.bind(this)
   render(){
     const {db,db_loading}=this.state
-    const {logged,isLoggedFunction,formState,change_state,where,limit,page,data}=this.props
-    const submit=async(e)=>{
-      e.preventDefault()
-      await isLoggedFunction()
-      change_state({showModal:formState==='select'||!logged?true:false, selectLoading:true})
-      await createFetch(formState,{data, where,offset_data:{limit,page}},async({query_req, db_query_imitation})=>{
-        const reqData=db_query_imitation || query_req
-
-        if(reqData?.length===0){
-          await change_state({selectLoading:false})
-          select.bind(this)();
-          change_state({page:0})
-        }else{
-          formState!=='select' && this.setState({db:reqData});
-          change_state({selectLoading:false,reqData})
-        }
-      })
-    }
+    const {logged}=this.props
+    const submit=submitForm.bind(this)
+    const selectAll=select.bind(this)
     return(
-      <CRUDPageContext.Provider value={{submit,db_loading,db,logged,
-        selectAll:select.bind(this)
-      }}>
+      <CRUDPageContext.Provider value={{db_loading,db,logged,submit,selectAll}}>
         <div className='container mt-5'>
           <TableContainer height='250px'>
             <MainTable/>

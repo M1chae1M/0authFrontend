@@ -2,7 +2,9 @@ import {useInView} from 'react-intersection-observer';
 import React from 'react';
 
 export default function OnloadAnimation({children}){
-  const [ref, inView]=useInView({});
+  const [ref, inView]=useInView({
+    triggerOnce:true
+  });
     const styles={
       transform:'translateX(250px)',
       opacity:'0',
